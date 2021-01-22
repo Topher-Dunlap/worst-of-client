@@ -1,6 +1,5 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
-import SearchFormOptions from "./SearchFormOptions";
 
 export default function NavList(props) {
 

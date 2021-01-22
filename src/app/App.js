@@ -13,6 +13,9 @@ function App() {
             color: "#444",
             textAlign: "center",
             lineHeight: "1.5",
+        },
+        formElementSpacing: {
+            margin: "0px 10px",
         }
     }
 

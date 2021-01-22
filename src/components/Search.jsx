@@ -1,6 +1,5 @@
 import React, {useContext} from 'react';
 import ThemeContext from "./ThemeContext";
-import {useForm} from "react-hook-form";
 import Results from "./Results";
 import SearchForm from "./SearchForm";
 
