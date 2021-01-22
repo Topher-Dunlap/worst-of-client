@@ -16,12 +16,15 @@ function App() {
         },
         formElementSpacing: {
             margin: "0px 10px",
+        },
+        sectionTopBottomMargin: {
+            margin : "8rem 2rem"
         }
     }
 
     return (
         <ThemeContext.Provider value={contextValue}>
-            <main style={borderStyle}>
+            <main>
                 <NavList/>
                 <div>
                     <ErrorBoundary>
@@ -34,7 +37,3 @@ function App() {
 }
 
 export default App;
-
-const borderStyle = {
-//css styling
-}

@@ -9,7 +9,8 @@ export default function Login() {
 
     return (
         <section style={theme}>
-            <LoginForm/>
+            <LoginForm />
         </section>
     )
 }
+

@@ -28,6 +28,7 @@ export default function Projects() {
 
     const sectionMap = sectionData.map((section, idx) =>
         <LandingSection
+            key={idx}
             headerContent={section.headerContent}
             pContent={section.pContent}
             sectionImage={section.sectionImage}
