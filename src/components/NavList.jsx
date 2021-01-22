@@ -1,45 +1,40 @@
 import React from 'react';
-import {NavLink} from 'react-router-dom';
+import NavListButtons from "./NavListButtons";
+import SearchFormOptions from "./SearchFormOptions";
 // import {BiHome} from "react-icons/bi";
 
 
-export default function NavList(props) {
+export default function NavList() {
+
+    //data used to populate nav buttons
+    const filterOptions = [
+        {
+            routeName: "About",
+            routePath: "/"
+        },
+        {
+            routeName: "Search",
+            routePath: "/search"
+        },
+        {
+            routeName: "Login",
+            routePath: "/login"
+        },
+    ]
+
+    //Map the Nav Buttons with data from filterOptions
+    const mapNavRoutes = filterOptions.map((routeData, idx) =>
+        <NavListButtons
+            key={idx}
+            routeName={routeData.routeName}
+            routePath={routeData.routePath}
+        />
+    )
+
     return (
         <div style={navContainer}>
             <ul>
-                <button style={navItem}>
-                    <NavLink
-                        exact to="/"
-                        activeClassName="isActive"
-                        activeStyle={{
-                            fontWeight: "bold",
-                            color: "#B3A577"
-                        }}>
-                        {/*<button image/>  imported image*/} About
-                    </NavLink>
-                </button>
-                <button style={navItem}>
-                    <NavLink
-                        to="/login"
-                        activeClassName="isActive"
-                        activeStyle={{
-                            fontWeight: "bold",
-                            color: "#B3A577"
-                        }}>
-                        {/*<button image/>  imported image*/}Login
-                    </NavLink>
-                </button>
-                <button style={navItem}>
-                    <NavLink
-                        to='/search'
-                        activeClassName="isActive"
-                        activeStyle={{
-                            fontWeight: "bold",
-                            color: "#B3A577"
-                        }}>
-                        {/*<button image/>  imported image*/}Search
-                    </NavLink>
-                </button>
+                {mapNavRoutes}
             </ul>
         </div>
     )
@@ -52,8 +47,4 @@ const navContainer = {
     right: 0,
     zIndex: 10,
     backgroundColor: "#aaa",
-}
-
-const navItem = {
-    margin: ".5rem",
 }

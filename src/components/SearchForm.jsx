@@ -1,48 +1,37 @@
 import React, {useContext} from 'react';
-import ThemeContext from "./ThemeContext";
 import {useForm} from "react-hook-form";
+import SearchFormOptions from "./SearchFormOptions";
+// import ThemeContext from "./ThemeContext";
 
 
-export default function Search() {
+export default function SearchForm() {
 
-    const context = useContext(ThemeContext);
-    const {register, handleSubmit} = useForm();
-    const theme = context.theme;
+    const {register, handleSubmit, errors} = useForm();
+    // const context = useContext(ThemeContext);
+    // const theme = context.theme;
 
     const onSubmit = (data) => {
         console.log(data)
     }
 
+    const filterOptions = ["Restaurants", "Bars", "Coffee Shops"]
+    const mapFilterOptions = filterOptions.map((option, idx) =>
+        <SearchFormOptions
+            key={idx}
+            filterOption={option}
+        />
+    )
+
     return (
         <div>
             <form onSubmit={handleSubmit(onSubmit)} >
                 <div style={searchBar}>
-                    <label style={radialStyling}>Search</label>
-                    <input ref={register} name="search" placeholder="Crusty Joes Tavern" required/>
+                    <input ref={register({required: true, minLength: 2})} name="searchField" placeholder="Crusty Joes Tavern"/>
+                    <button style={radialStyling} type="submit">Search</button>
+                    {errors.searchField && <p>This is required</p>}
                 </div>
                 <br/>
-                <span style={radialStyling}>
-                    <input ref={register} type="radio" name="search-type-restaurant" value="true"/>
-                    <label htmlFor="dream-type-double">
-                        <span>Restaurant</span>
-                    </label>
-                </span>
-                <span style={radialStyling}>
-                    <input ref={register} style={radialStyling} type="radio" name="search-type-bars" value="true"/>
-                    <label>
-                        <span>Bars</span>
-                    </label>
-                </span>
-                <span style={radialStyling}>
-                    <input ref={register} type="radio" name="search-type-coffee" value="true"/>
-                    <label>
-                        <span>Coffee Shops</span>
-                    </label>
-                </span>
-                <div>
-                    <button type="submit">Submit</button>
-                    <button type="reset">Reset</button>
-                </div>
+                {mapFilterOptions}
             </form>
         </div>
     )

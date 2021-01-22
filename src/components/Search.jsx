@@ -27,7 +27,6 @@ export default function Search() {
 }
 
 const container = {
-    // minHeight: "200px",
     padding: "70px 15px",
 }
 
