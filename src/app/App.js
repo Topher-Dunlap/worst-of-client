@@ -19,7 +19,13 @@ function App() {
         },
         sectionTopBottomMargin: {
             margin : "8rem 2rem"
-        }
+        },
+        backgroundColors: [
+            {backgroundColor: "#AAAAAA"},
+            {backgroundColor: "#BBBBBB"},
+            {backgroundColor: "#EEEEEE"},
+        ],
+
     }
 
     return (
