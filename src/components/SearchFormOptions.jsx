@@ -2,16 +2,17 @@ import React from 'react';
 import {useForm} from "react-hook-form";
 // import ThemeContext from "./ThemeContext";
 
-export default function SearchForm(props) {
+export default function SearchFormOption(props) {
 
     const {register} = useForm();
-    const filterOption = props.filterOption;
+    const inputName = props.inputName;
+    const nameLabel = props.nameLabel;
 
     return (
         <span style={radialStyling}>
-            <input ref={register} type="checkbox" name="search-type-restaurant" value="true"/>
-            <label htmlFor="dream-type-double">
-                <span style={textStyle}>{filterOption}</span>
+            <input ref={register} type="checkbox" name={inputName} value="true"/>
+            <label>
+                <span style={textStyle}>{nameLabel}</span>
             </label>
         </span>
     )

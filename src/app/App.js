@@ -6,28 +6,6 @@ import ThemeContext from "../components/ThemeContext";
 
 function App() {
 
-    const contextValue = {
-        theme: {
-            fontFamily: "Open Sans, sans-serif",
-            fontSize: "20px",
-            color: "#444",
-            textAlign: "center",
-            lineHeight: "1.5",
-        },
-        formElementSpacing: {
-            margin: "0px 10px",
-        },
-        sectionTopBottomMargin: {
-            margin : "8rem 2rem"
-        },
-        backgroundColors: [
-            {backgroundColor: "#AAAAAA"},
-            {backgroundColor: "#BBBBBB"},
-            {backgroundColor: "#EEEEEE"},
-        ],
-
-    }
-
     return (
         <ThemeContext.Provider value={contextValue}>
             <main>
@@ -40,6 +18,27 @@ function App() {
             </main>
         </ThemeContext.Provider>
     );
+}
+
+const contextValue = {
+    theme: {
+        fontFamily: "Open Sans, sans-serif",
+        fontSize: "20px",
+        color: "#444",
+        textAlign: "center",
+        lineHeight: "1.5",
+    },
+    formElementSpacing: {
+        margin: "0px 10px",
+    },
+    sectionTopBottomMargin: {
+        margin : "8rem 2rem"
+    },
+    backgroundColors: [
+        {backgroundColor: "#AAAAAA"},
+        {backgroundColor: "#BBBBBB"},
+        {backgroundColor: "#EEEEEE"},
+    ],
 }
 
 export default App;

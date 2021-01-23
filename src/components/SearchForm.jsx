@@ -12,11 +12,25 @@ export default function SearchForm() {
 
     const context = useContext(ThemeContext);
     const formElementSpacing = context.formElementSpacing;
-    const filterOptions = ["Restaurants", "Bars", "Coffee Shops"]
+    const filterOptions = [
+        {
+            inputName: "restaurants",
+            nameLabel: "Restaurants"
+        },
+        {
+            inputName: "bars",
+            nameLabel: "Bars",
+        },
+        {
+            inputName: "coffee-shop",
+            nameLabel: "Coffee Shop",
+        },
+    ]
     const mapFilterOptions = filterOptions.map((option, idx) =>
         <SearchFormOptions
             key={idx}
-            filterOption={option}
+            inputName={option.inputName}
+            nameLabel={option.nameLabel}
         />
     )
 
@@ -24,7 +38,7 @@ export default function SearchForm() {
         <div>
             <form onSubmit={handleSubmit(onSubmit)} >
                 <div style={searchBar}>
-                    <input ref={register({required: true, minLength: 2})} name="searchField" placeholder="Crusty Joes Tavern"/>
+                    <input ref={register({required: true, minLength: 2})} name="searchField" placeholder="Minneapolis"/>
                     <button style={formElementSpacing} type="submit">Search</button>
                     {errors.searchField && <p>This is required</p>}
                 </div>

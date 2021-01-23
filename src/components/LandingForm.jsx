@@ -10,28 +10,6 @@ export default function SearchForm() {
         console.log(data)
     }
 
-    const formOptions = [
-        {
-            fieldLabel: "First name",
-            inputName: "first-name",
-            type: "text",
-        },
-        {
-            fieldLabel: "Last name",
-            inputName: "last-name",
-            type: "text",
-        },
-        {
-            fieldLabel: "Email",
-            inputName: "username",
-            type: "text",
-        },
-        {
-            fieldLabel: "Password",
-            inputName: "password",
-            type: "password",
-        },
-    ]
     const mapFormInputs = formOptions.map((option, idx) =>
         <LandingFormInput
             key={idx}
@@ -48,3 +26,26 @@ export default function SearchForm() {
 
     )
 }
+
+const formOptions = [
+    {
+        fieldLabel: "First name",
+        inputName: "first-name",
+        type: "text",
+    },
+    {
+        fieldLabel: "Last name",
+        inputName: "last-name",
+        type: "text",
+    },
+    {
+        fieldLabel: "Email",
+        inputName: "username",
+        type: "text",
+    },
+    {
+        fieldLabel: "Password",
+        inputName: "password",
+        type: "password",
+    },
+]

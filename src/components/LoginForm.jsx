@@ -5,23 +5,10 @@ import LoginFormInput from "./LandingFormInput";
 
 export default function LoginForm() {
 
-    const {handleSubmit} = useForm();
+    const {register, handleSubmit} = useForm();
     const onSubmit = (data) => {
         console.log(data)
     }
-
-    const formOptions = [
-        {
-            fieldLabel: "E-Mail",
-            inputName: "email",
-            type: "text",
-        },
-        {
-            fieldLabel: "Password",
-            inputName: "password",
-            type: "password",
-        },
-    ]
 
     const mapFormInputs = formOptions.map((option, idx) =>
         <LoginFormInput
@@ -39,6 +26,11 @@ export default function LoginForm() {
             <div>
                 {mapFormInputs}
                 <button type="submit">Login</button>
+                <br/>
+                <input ref={register} type="checkbox" name="remember-me" value="true"/>
+                <label>
+                    <span>Remember Me</span>
+                </label>
             </div>
         </form>
     )
@@ -48,3 +40,17 @@ const headerStyle = {
     marginTop: "6rem",
     marginBottom: "3rem",
 }
+
+
+const formOptions = [
+    {
+        fieldLabel: "E-Mail",
+        inputName: "email",
+        type: "text",
+    },
+    {
+        fieldLabel: "Password",
+        inputName: "password",
+        type: "password",
+    },
+]

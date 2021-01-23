@@ -14,13 +14,12 @@ export default function LoginFormInput(props) {
     return(
         <div>
             <label
-                htmlFor={inputName}
                 style={formElementSpacing}>
                 {fieldLabel}
             </label>
             <input
                 ref={register({required: true, minLength: 2})}
-                name="emailField"
+                name={inputName}
                 type={typeName}/>
             <br/>
             {errors.inputName && <p>This is required</p>}
