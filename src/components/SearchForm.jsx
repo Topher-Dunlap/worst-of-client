@@ -7,30 +7,10 @@ import config from "../config";
 export default function SearchForm() {
 
     const {register, handleSubmit, errors} = useForm();
-    const onSubmit = () => {
-        fetch(`${config.API_ENDPOINT}/search`, {
-            method: 'GET',
-            headers: {
-                'content-type': 'application/json',
-                "apiSearchValues": JSON.stringify(apiValues)
-            },
-        })
-            .then((data) => {
-                    data.json().then((promiseData) => console.log(promiseData))
-            })
-            .catch(error => {
-                console.error({ error })
-            })
-    }
-
-    const [apiValues, setSearchValues] = useState({
-        term:'',
-        location: '',
-        offsetLimit: 100
-    });
-
     const context = useContext(ThemeContext);
     const formElementSpacing = context.formElementSpacing;
+
+    // form input values populated by .map function
     const filterOptions = [
         {
             inputName: "restaurants",
@@ -45,6 +25,36 @@ export default function SearchForm() {
             nameLabel: "Coffee Shop",
         },
     ]
+
+    ///useState for search form values
+    const [apiValues, setSearchValues] = useState({
+        term:'',
+        location: '',
+        offsetLimit: 100
+    });
+    const termQuery = encodeURIComponent(apiValues.term);
+    const locationQuery = encodeURIComponent(apiValues.location);
+    const offsetQuery = encodeURIComponent(apiValues.offset);
+
+    //onSubmit sending search for values via query string to back-end
+    const onSubmit = () => {
+        fetch(`${config.API_ENDPOINT}/search?location=${locationQuery}&term=${termQuery}&limit=50&offset=${offsetQuery}`, {
+            method: 'GET',
+            headers: {
+                'content-type': 'application/json',
+                // 'apiSearchValues': JSON.stringify(apiValues),
+            },
+        })
+            .then((data) => {
+                    console.log(".then inside client GET", data)
+                    // data.json().then((promiseData) => console.log("promise data", promiseData))
+            })
+            .catch(error => {
+                console.error({ error })
+            })
+    }
+
+    //Map function to create search form inputs
     const mapFilterOptions = filterOptions.map((option, idx) =>
         <SearchFormOptions
             key={idx}
@@ -55,6 +65,7 @@ export default function SearchForm() {
         />
     )
 
+    //update the location key in useState for search form values
     const searchOnChange = (data) => {
             setSearchValues({...apiValues, location: data.target.value})
         }

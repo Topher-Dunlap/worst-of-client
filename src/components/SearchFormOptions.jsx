@@ -16,7 +16,6 @@ export default function SearchFormOption(props) {
         else if (!data.target.checked){
             setSearchValues({...apiValues, term: ""})
         }
-
     }
 
     return (
