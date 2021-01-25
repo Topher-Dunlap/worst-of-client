@@ -28,8 +28,3 @@ export default function Search() {
 const container = {
     padding: "70px 15px",
 }
-
-// nav, footer {
-//     padding: 1% 0;
-//     background-color: #aaa;
-// }

@@ -1,16 +1,33 @@
 import React from 'react';
 import {useForm} from "react-hook-form";
-// import ThemeContext from "./ThemeContext";
 
 export default function SearchFormOption(props) {
 
     const {register} = useForm();
     const inputName = props.inputName;
     const nameLabel = props.nameLabel;
+    const setSearchValues = props.setSearchValues;
+    const apiValues = props.apiValues;
+
+    const onChange = (data) => {
+        if(data.target.checked) {
+            setSearchValues({...apiValues, term: inputName})
+        }
+        else if (!data.target.checked){
+            setSearchValues({...apiValues, term: ""})
+        }
+
+    }
 
     return (
         <span style={radialStyling}>
-            <input ref={register} type="checkbox" name={inputName} value="true"/>
+            <input
+                onChange={e => onChange(e)}
+                checked={props.value}
+                ref={register}
+                type="checkbox"
+                name={inputName}
+                value="false"/>
             <label>
                 <span style={textStyle}>{nameLabel}</span>
             </label>
