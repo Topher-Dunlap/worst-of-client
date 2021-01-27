@@ -34,7 +34,12 @@ export default function SearchForm() {
     });
     const termQuery = encodeURIComponent(apiValues.term);
     const locationQuery = encodeURIComponent(apiValues.location);
-    const offsetQuery = encodeURIComponent(apiValues.offset);
+    const offsetQuery = encodeURIComponent(apiValues.offsetLimit);
+
+    ///useState for yelp API results
+    const [apiResults, setApiResults] = useState({
+        yelpObj:{},
+    });
 
     //onSubmit sending search for values via query string to back-end
     const onSubmit = () => {
@@ -46,8 +51,8 @@ export default function SearchForm() {
             },
         })
             .then((data) => {
-                    console.log(".then inside client GET", data)
-                    // data.json().then((promiseData) => console.log("promise data", promiseData))
+                setApiResults({ yelpObj: data })
+                console.log(setApiResults)
             })
             .catch(error => {
                 console.error({ error })
