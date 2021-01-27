@@ -43,6 +43,7 @@ export default function SearchForm() {
 
     //onSubmit sending search for values via query string to back-end
     const onSubmit = () => {
+        console.log(`${config.API_ENDPOINT}/search?location=${locationQuery}&term=${termQuery}&limit=50&offset=${offsetQuery}`)
         fetch(`${config.API_ENDPOINT}/search?location=${locationQuery}&term=${termQuery}&limit=50&offset=${offsetQuery}`, {
             method: 'GET',
             headers: {
