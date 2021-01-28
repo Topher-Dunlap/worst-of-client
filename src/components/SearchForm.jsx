@@ -38,9 +38,7 @@ export default function SearchForm() {
     const offsetQuery = encodeURIComponent(apiValues.offsetLimit);
 
     ///useState for yelp API results
-    const [apiResults, setApiResults] = useState({
-        yelpObj:{},
-    });
+    const [apiResults, setApiResults] = useState({});
 
     //onSubmit sending search for values via query string to back-end
     const onSubmit = () => {
@@ -52,8 +50,10 @@ export default function SearchForm() {
             },
         })
             .then((data) => {
-                // setApiResults({ yelpObj: data })
-                console.log(data)
+                /// If using axios no need to use this bottom promise sequence to access the data
+                data.json().then((resData) => {
+                    setApiResults({resData} )
+                })
             })
             .catch(error => {
                 console.error({ error })
