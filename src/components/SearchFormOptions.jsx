@@ -23,10 +23,11 @@ export default function SearchFormOption(props) {
             <input
                 onChange={e => onChange(e)}
                 checked={props.value}
+                type="radio"
+                value={inputName}
+                name="radio input"
                 ref={register}
-                type="checkbox"
-                name={inputName}
-                value="false"/>
+            />
             <label>
                 <span style={textStyle}>{nameLabel}</span>
             </label>

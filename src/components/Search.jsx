@@ -11,12 +11,13 @@ export default function Search() {
     ///useState for yelp API results
     const [apiResults, setApiResults] = useState([{}]);
 
+    //if no search has been made return no results
     function NoResults() {
         return <div></div>
     }
 
+    //if search returns results render results else return nothing
     function ResultsConditional() {
-        console.log(apiResults)
         if (Object.keys(apiResults).length > 1) {
             return <Results apiResults={apiResults}/>
         }

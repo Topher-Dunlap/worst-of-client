@@ -1,7 +1,15 @@
-import React from 'react';
-
+import React, {useContext} from 'react';
+import ThemeContext from "./ThemeContext";
 
 export default function ResultsItem(props) {
+
+    ///generates random background color from context
+    const context = useContext(ThemeContext);
+    const backgroundColor = context.backgroundColors;
+    const randomColorNum = Math.floor(Math.random() * Math.floor(3));
+    const backgroundColorPicker = backgroundColor[randomColorNum]
+
+    ///prop values
     const businessName = props.name
     const businessRating = props.rating
     const businessImage = props.image_url
@@ -9,11 +17,13 @@ export default function ResultsItem(props) {
 
     return(
         <li style={resultsStyle}>
-            <h2>{businessName}</h2>
-            <p>Rating: {businessRating}</p>
-            <img style={imageStyle} alt="business" src={businessImage}/>
-            <br/>
-            <a href={yelpLink}>Yelp page</a>
+            <div style={backgroundColorPicker}>
+                <h2>{businessName}</h2>
+                <p>Rating: {businessRating}</p>
+                <img style={imageStyle} alt="business" src={businessImage}/>
+                <br/>
+                <a href={yelpLink} target="_blank" rel="noopener noreferrer">Yelp page</a>
+            </div>
         </li>
     )
 }
@@ -21,14 +31,6 @@ export default function ResultsItem(props) {
 const imageStyle = {
     width: "75%",
     height: "auto",
-}
-
-const listStyling = {
-    listStyleType: "none",
-}
-
-const resultSpacer = {
-    margin: "3rem, auto",
 }
 
 const resultsStyle = {
