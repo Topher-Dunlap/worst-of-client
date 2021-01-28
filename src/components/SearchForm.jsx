@@ -9,6 +9,7 @@ export default function SearchForm() {
     const {register, handleSubmit, errors} = useForm();
     const context = useContext(ThemeContext);
     const formElementSpacing = context.formElementSpacing;
+    const apiToken = process.env.YELP_API_TOKEN;
 
     // form input values populated by .map function
     const filterOptions = [
@@ -43,17 +44,16 @@ export default function SearchForm() {
 
     //onSubmit sending search for values via query string to back-end
     const onSubmit = () => {
-        console.log(`${config.API_ENDPOINT}/search?location=${locationQuery}&term=${termQuery}&limit=50&offset=${offsetQuery}`)
         fetch(`${config.API_ENDPOINT}/search?location=${locationQuery}&term=${termQuery}&limit=50&offset=${offsetQuery}`, {
             method: 'GET',
             headers: {
                 'content-type': 'application/json',
-                // 'apiSearchValues': JSON.stringify(apiValues),
+                // 'Authorization': `Bearer ${apiToken}`
             },
         })
             .then((data) => {
-                setApiResults({ yelpObj: data })
-                console.log(setApiResults)
+                // setApiResults({ yelpObj: data })
+                console.log(data)
             })
             .catch(error => {
                 console.error({ error })
