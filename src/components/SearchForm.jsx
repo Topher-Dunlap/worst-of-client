@@ -32,7 +32,7 @@ export default function SearchForm(props) {
     const [apiValues, setSearchValues] = useState({
         term: '',
         location: '',
-        offsetLimit: 100
+        offsetLimit: 800
     });
     const termQuery = encodeURIComponent(apiValues.term);
     const locationQuery = encodeURIComponent(apiValues.location);

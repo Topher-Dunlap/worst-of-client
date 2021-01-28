@@ -14,6 +14,11 @@ export default function ResultsItem(props) {
     const businessRating = props.rating
     const businessImage = props.image_url
     const yelpLink = props.url
+    const location = props.location
+
+    const addressMap = location.display_address.map((line, idx) =>
+        <li key={idx}> {line} </li>
+    )
 
     return(
         <li style={resultsStyle}>
@@ -21,6 +26,10 @@ export default function ResultsItem(props) {
                 <h2>{businessName}</h2>
                 <p>Rating: {businessRating}</p>
                 <img style={imageStyle} alt="business" src={businessImage}/>
+                <ul style={innerListStyle}>
+                    <h3>Address</h3>
+                    {addressMap}
+                </ul>
                 <br/>
                 <a href={yelpLink} target="_blank" rel="noopener noreferrer">Yelp page</a>
             </div>
@@ -29,13 +38,23 @@ export default function ResultsItem(props) {
 }
 
 const imageStyle = {
-    width: "75%",
-    height: "auto",
+    // width: "75%",
+    // height: "auto",
+    width: "250px",
+    height: "250px",
+}
+
+const innerListStyle = {
+    listStyleType: "none",
+    textAlign: "center",
+    padding: "0",
+    height: "75%",
 }
 
 const resultsStyle = {
     listStyleType: "none",
     textAlign: "center",
+    padding: "0",
     margin: "5rem auto",
     height: "75%",
 }
