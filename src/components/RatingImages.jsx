@@ -34,6 +34,6 @@ export default function RatingImageFinder(props) {
     const filteredRatingImage = imageStore.filter(id => id.id === businessRating)
 
     return (
-        <img alt="business" src={filteredRatingImage[0].src}/>
+        <img alt="rating" src={filteredRatingImage[0].src}/>
     )
 }

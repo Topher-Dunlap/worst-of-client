@@ -56,6 +56,7 @@ export default function SearchForm(props) {
                 if(response.data > 0) {
                     let newOffsetQuery;
                     (response.data < 50) ? newOffsetQuery = 0 : newOffsetQuery = response.data - 1;
+                    console.log(`${config.API_ENDPOINT}/search?location=${locationQuery}&term=${termQuery}&limit=50&offset=${newOffsetQuery}`)
                     axios.get(`${config.API_ENDPOINT}/search?location=${locationQuery}&term=${termQuery}&limit=50&offset=${newOffsetQuery}`)
                         .then((response) => {
                             ///clean data before setting state with map to populate in results component
