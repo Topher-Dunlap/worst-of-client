@@ -7,10 +7,15 @@ import config from "../config";
 
 export default function SearchForm(props) {
 
+    ///react-form-hook import variables
     const {register, handleSubmit, errors} = useForm();
+
+    ///theme context variables
     const context = useContext(ThemeContext);
     const formElementSpacing = context.formElementSpacing;
-    ///const apiToken = process.env.YELP_API_TOKEN;
+
+    ///api authorization
+    const apiToken = process.env.YELP_API_TOKEN;
 
     ///form input values populated by .map function
     const filterOptions = [
@@ -35,38 +40,37 @@ export default function SearchForm(props) {
         offsetLimit: 800
     });
 
-    // ///state for display message after search
-    // const [noResults, setNoResults] = useState({
-    //     noResultCounter: 0,
-    //     location: 'Please try searching a larger city'
-    // });
-
-
     const termQuery = encodeURIComponent(apiValues.term);
     const locationQuery = encodeURIComponent(apiValues.location);
     const offsetQuery = encodeURIComponent(apiValues.offsetLimit);
 
-
     ///onSubmit sending search for values via query string to back-end
     const onSubmit = () => {
-        axios.get(`${config.API_ENDPOINT}/search?location=${locationQuery}&term=${termQuery}&limit=50&offset=${offsetQuery}`)
+        // console.log("on submit query", `${config.API_ENDPOINT}/search?location=${locationQuery}&term=${termQuery}&limit=50&offset=${offsetQuery}`)
+        axios.get(`${config.API_ENDPOINT}/search?location=${locationQuery}&term=${termQuery}&limit=50&offset=${offsetQuery}`, {
+            headers: {
+                'Authorization': `token ${apiToken}`
+            }
+        })
             .then((response) => {
                 let apiResults = [];
                 ///conditional statements to create new get with updated offset query string if no results return
-                if(response.data > 0) {
+                if (response.data > 0) {
                     let newOffsetQuery;
-                    (response.data < 50) ? newOffsetQuery = 0 : newOffsetQuery = response.data - 1;
+                    (response.data < 50) ? newOffsetQuery = 0 : newOffsetQuery = response.data - 1 ///conditional that sets offset query param
                     console.log(`${config.API_ENDPOINT}/search?location=${locationQuery}&term=${termQuery}&limit=50&offset=${newOffsetQuery}`)
-                    axios.get(`${config.API_ENDPOINT}/search?location=${locationQuery}&term=${termQuery}&limit=50&offset=${newOffsetQuery}`)
+                    axios.get(`${config.API_ENDPOINT}/search?location=${locationQuery}&term=${termQuery}&limit=50&offset=${newOffsetQuery}`, {
+                        headers: {
+                            'Authorization': `token ${apiToken}`
+                        }
+                    })
                         .then((response) => {
                             ///clean data before setting state with map to populate in results component
                             response.data.map(business =>
                                 apiResults.push(business))
                             props.setApiResults(apiResults)
-                            console.log(apiResults)
                         });
-                }
-                else {
+                } else {
                     ///clean data before setting state with map to populate in results component
                     response.data.map(business =>
                         apiResults.push(business))
