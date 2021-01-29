@@ -46,6 +46,7 @@ export default function SearchForm(props) {
 
     ///onSubmit sending search for values via query string to back-end
     const onSubmit = () => {
+        console.log("params before axios get: ", termQuery,locationQuery, offsetQuery)
         axios.get(`${config.API_ENDPOINT}/search?location=${locationQuery}&term=${termQuery}&limit=50&offset=${offsetQuery}`)
             .then((response) => {
                 let apiResults = [];
