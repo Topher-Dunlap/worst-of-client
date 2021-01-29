@@ -1,5 +1,6 @@
 import React, {useContext} from 'react';
 import ThemeContext from "./ThemeContext";
+import RatingImages from "./RatingImages";
 
 export default function ResultsItem(props) {
 
@@ -16,22 +17,30 @@ export default function ResultsItem(props) {
     const yelpLink = props.url
     const location = props.location
 
+    ///create list display for business address
     const addressMap = location.display_address.map((line, idx) =>
-        <li key={idx}> {line} </li>
+        <li key={idx}>
+            {line}
+        </li>
     )
 
     return(
         <li style={resultsStyle}>
             <div style={backgroundColorPicker}>
                 <h2>{businessName}</h2>
-                <p>Rating: {businessRating}</p>
-                <img style={imageStyle} alt="business" src={businessImage}/>
+                <RatingImages businessRating={businessRating}/>
+                <br/>
+                <a href={yelpLink} target="_blank" rel="noopener noreferrer">
+                    <img
+                        style={imageStyle}
+                        alt="business"
+                        src={businessImage}
+                    />
+                </a>
                 <ul style={innerListStyle}>
                     <h3>Address</h3>
                     {addressMap}
                 </ul>
-                <br/>
-                <a href={yelpLink} target="_blank" rel="noopener noreferrer">Yelp page</a>
             </div>
         </li>
     )

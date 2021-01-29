@@ -10,9 +10,9 @@ export default function SearchForm(props) {
     const {register, handleSubmit, errors} = useForm();
     const context = useContext(ThemeContext);
     const formElementSpacing = context.formElementSpacing;
-    // const apiToken = process.env.YELP_API_TOKEN;
+    ///const apiToken = process.env.YELP_API_TOKEN;
 
-    // form input values populated by .map function
+    ///form input values populated by .map function
     const filterOptions = [
         {
             inputName: "restaurants",
@@ -23,8 +23,8 @@ export default function SearchForm(props) {
             nameLabel: "Bars",
         },
         {
-            inputName: "coffee-shop",
-            nameLabel: "Coffee Shop",
+            inputName: "coffee",
+            nameLabel: "Coffee",
         },
     ]
 
@@ -34,20 +34,44 @@ export default function SearchForm(props) {
         location: '',
         offsetLimit: 800
     });
+
+    // ///state for display message after search
+    // const [noResults, setNoResults] = useState({
+    //     noResultCounter: 0,
+    //     location: 'Please try searching a larger city'
+    // });
+
+
     const termQuery = encodeURIComponent(apiValues.term);
     const locationQuery = encodeURIComponent(apiValues.location);
     const offsetQuery = encodeURIComponent(apiValues.offsetLimit);
 
 
-    //onSubmit sending search for values via query string to back-end
+    ///onSubmit sending search for values via query string to back-end
     const onSubmit = () => {
         axios.get(`${config.API_ENDPOINT}/search?location=${locationQuery}&term=${termQuery}&limit=50&offset=${offsetQuery}`)
-            .then((data) => {
-                //clean data before setting state with map to populate in results component
+            .then((response) => {
                 let apiResults = [];
-                data.data.map(business =>
-                    apiResults.push(business))
-                props.setApiResults(apiResults)
+                ///conditional statements to create new get with updated offset query string if no results return
+                if(response.data > 0) {
+                    let newOffsetQuery;
+                    (response.data < 50) ? newOffsetQuery = 0 : newOffsetQuery = response.data - 1;
+                    axios.get(`${config.API_ENDPOINT}/search?location=${locationQuery}&term=${termQuery}&limit=50&offset=${newOffsetQuery}`)
+                        .then((response) => {
+                            ///clean data before setting state with map to populate in results component
+                            response.data.map(business =>
+                                apiResults.push(business))
+                            props.setApiResults(apiResults)
+                            console.log(apiResults)
+                        });
+                }
+                else {
+                    ///clean data before setting state with map to populate in results component
+                    response.data.map(business =>
+                        apiResults.push(business))
+                    props.setApiResults(apiResults)
+                    console.log(apiResults)
+                }
             })
             .catch(error => {
                 console.error({error})

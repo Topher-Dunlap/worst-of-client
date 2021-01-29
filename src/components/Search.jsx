@@ -19,7 +19,6 @@ export default function Search() {
     //if search returns results render results else return nothing
     function ResultsConditional() {
         if (Object.keys(apiResults).length > 1) {
-            console.log(apiResults)
             return <Results apiResults={apiResults}/>
         }
         else {
