@@ -15,7 +15,7 @@ export default function SearchForm(props) {
     const formElementSpacing = context.formElementSpacing;
 
     ///api authorization
-    const apiToken = process.env.YELP_API_TOKEN;
+    // const apiToken = process.env.YELP_API_TOKEN;
 
     ///form input values populated by .map function
     const filterOptions = [
@@ -46,24 +46,14 @@ export default function SearchForm(props) {
 
     ///onSubmit sending search for values via query string to back-end
     const onSubmit = () => {
-        // console.log("on submit query", `${config.API_ENDPOINT}/search?location=${locationQuery}&term=${termQuery}&limit=50&offset=${offsetQuery}`)
-        axios.get(`${config.API_ENDPOINT}/search?location=${locationQuery}&term=${termQuery}&limit=50&offset=${offsetQuery}`, {
-            headers: {
-                'Authorization': `token ${apiToken}`
-            }
-        })
+        axios.get(`${config.API_ENDPOINT}/search?location=${locationQuery}&term=${termQuery}&limit=50&offset=${offsetQuery}`)
             .then((response) => {
                 let apiResults = [];
                 ///conditional statements to create new get with updated offset query string if no results return
                 if (response.data > 0) {
                     let newOffsetQuery;
                     (response.data < 50) ? newOffsetQuery = 0 : newOffsetQuery = response.data - 1 ///conditional that sets offset query param
-                    console.log(`${config.API_ENDPOINT}/search?location=${locationQuery}&term=${termQuery}&limit=50&offset=${newOffsetQuery}`)
-                    axios.get(`${config.API_ENDPOINT}/search?location=${locationQuery}&term=${termQuery}&limit=50&offset=${newOffsetQuery}`, {
-                        headers: {
-                            'Authorization': `token ${apiToken}`
-                        }
-                    })
+                    axios.get(`${config.API_ENDPOINT}/search?location=${locationQuery}&term=${termQuery}&limit=50&offset=${newOffsetQuery}`)
                         .then((response) => {
                             ///clean data before setting state with map to populate in results component
                             response.data.map(business =>
@@ -75,7 +65,6 @@ export default function SearchForm(props) {
                     response.data.map(business =>
                         apiResults.push(business))
                     props.setApiResults(apiResults)
-                    console.log(apiResults)
                 }
             })
             .catch(error => {
