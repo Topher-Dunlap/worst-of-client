@@ -3,7 +3,7 @@ import {useForm} from "react-hook-form";
 import LandingFormInput from "./LandingFormInput";
 
 
-export default function SearchForm() {
+export default function LandingForm() {
 
     const {handleSubmit} = useForm();
     const onSubmit = (data) => {

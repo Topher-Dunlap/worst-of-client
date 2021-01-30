@@ -3,7 +3,7 @@ import ThemeContext from "./ThemeContext";
 import LandingSection from "./LandingSection";
 import LandingForm from "./LandingForm";
 
-export default function Projects() {
+export default function Landing() {
 
     const context = useContext(ThemeContext);
     const theme = context.theme;

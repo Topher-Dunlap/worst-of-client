@@ -23,6 +23,7 @@ export default function Search() {
 
     //if search returns results render results else return nothing
     function ResultsConditional() {
+        console.log(apiResults)
         if (apiResults.length !== 0) {
             return <Results apiResults={apiResults}/>
         }

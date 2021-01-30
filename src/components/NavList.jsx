@@ -5,22 +5,6 @@ import NavListButtons from "./NavListButtons";
 
 export default function NavList() {
 
-    //data used to populate nav buttons
-    const filterOptions = [
-        {
-            routeName: "About",
-            routePath: "/"
-        },
-        {
-            routeName: "Search",
-            routePath: "/search"
-        },
-        {
-            routeName: "Login",
-            routePath: "/login"
-        },
-    ]
-
     //Map the Nav Buttons with data from filterOptions
     const mapNavRoutes = filterOptions.map((routeData, idx) =>
         <NavListButtons
@@ -38,6 +22,22 @@ export default function NavList() {
         </div>
     )
 }
+
+//data used to populate nav buttons
+const filterOptions = [
+    {
+        routeName: "About",
+        routePath: "/"
+    },
+    {
+        routeName: "Search",
+        routePath: "/search"
+    },
+    {
+        routeName: "Login",
+        routePath: "/login"
+    },
+]
 
 const navContainer = {
     position: "fixed",

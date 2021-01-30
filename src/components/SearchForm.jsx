@@ -14,22 +14,6 @@ export default function SearchForm(props) {
     const context = useContext(ThemeContext);
     const formElementSpacing = context.formElementSpacing;
 
-    ///form input values populated by .map function
-    const filterOptions = [
-        {
-            inputName: "restaurants",
-            nameLabel: "Restaurants"
-        },
-        {
-            inputName: "bars",
-            nameLabel: "Bars",
-        },
-        {
-            inputName: "coffee",
-            nameLabel: "Coffee",
-        },
-    ]
-
     ///useState for search form values
     const [apiValues, setSearchValues] = useState({
         term: '',
@@ -112,3 +96,19 @@ export default function SearchForm(props) {
 const searchBar = {
     margin: "75px 10px 0px",
 }
+
+///form input values populated by .map function
+const filterOptions = [
+    {
+        inputName: "restaurants",
+        nameLabel: "Restaurants"
+    },
+    {
+        inputName: "bars",
+        nameLabel: "Bars",
+    },
+    {
+        inputName: "coffee",
+        nameLabel: "Coffee",
+    },
+]

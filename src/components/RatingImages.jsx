@@ -16,20 +16,6 @@ export default function RatingImageFinder(props) {
     //import rating prop
     const businessRating = props.businessRating;
 
-    //store image paths to correlating ID
-    const imageStore = [
-        {id: 0, src: zero},
-        {id: 1, src: one},
-        {id: 1.5, src: oneHalf},
-        {id: 2, src: two},
-        {id: 2.5, src: twoHalf},
-        {id: 3, src: three},
-        {id: 3.5, src: threeHalf},
-        {id: 4, src: four},
-        {id: 4.5, src: fourHalf},
-        {id: 5, src: five},
-    ]
-
     ///filter the images comparing rating to ID correlating to image
     const filteredRatingImage = imageStore.filter(id => id.id === businessRating)
 
@@ -37,3 +23,17 @@ export default function RatingImageFinder(props) {
         <img alt="rating" src={filteredRatingImage[0].src}/>
     )
 }
+
+//store image paths to correlating ID
+const imageStore = [
+    {id: 0, src: zero},
+    {id: 1, src: one},
+    {id: 1.5, src: oneHalf},
+    {id: 2, src: two},
+    {id: 2.5, src: twoHalf},
+    {id: 3, src: three},
+    {id: 3.5, src: threeHalf},
+    {id: 4, src: four},
+    {id: 4.5, src: fourHalf},
+    {id: 5, src: five},
+]

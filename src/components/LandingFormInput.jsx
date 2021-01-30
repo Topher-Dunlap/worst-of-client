@@ -2,7 +2,7 @@ import React, {useContext} from 'react';
 import {useForm} from "react-hook-form";
 import ThemeContext from "./ThemeContext";
 
-export default function SearchForm(props) {
+export default function LandingFormInput(props) {
 
     const context = useContext(ThemeContext);
     const formElementSpacing = context.formElementSpacing;
