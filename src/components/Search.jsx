@@ -11,7 +11,7 @@ export default function Search() {
     const theme = context.theme;
 
     ///useState for yelp API results
-    const [apiResults, setApiResults] = useState([{}]);
+    const [apiResults, setApiResults] = useState([]);
 
     ///useState for loading spinner
     const [loadingSpinner, setLoadingSpinner] = useState(false);
@@ -23,7 +23,7 @@ export default function Search() {
 
     //if search returns results render results else return nothing
     function ResultsConditional() {
-        if (Object.keys(apiResults).length >= 1) {
+        if (apiResults.length !== 0) {
             return <Results apiResults={apiResults}/>
         }
         else {
