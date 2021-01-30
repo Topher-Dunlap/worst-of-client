@@ -1,0 +1,136 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Landing component renders the UI as expected 1`] = `
+Array [
+  <section>
+    <div>
+      <span>
+        <h1
+          style={
+            Object {
+              "marginTop": "8rem",
+            }
+          }
+        >
+          Worst Of
+        </h1>
+        <h2>
+          Find adventure in any City.
+        </h2>
+      </span>
+      <section>
+        <header
+          style={
+            Object {
+              "backgroundColor": "#EEEEEE",
+            }
+          }
+        >
+          <h3>
+            Experience the lowest rated places a city has to offer.
+          </h3>
+        </header>
+        <p>
+          [
+          <em>
+            placeholder for screenshot of a dive bar
+          </em>
+          ]
+        </p>
+        <p>
+          Worst Of helps you discover the lowest rated, restaurants, bars and coffee shops in your area.
+                        Have you and your friends found yourselves with nothing to do on a friday night? Now's your
+                        chance at rolling the fun dice on finding a new local favorite that you may love to hate!
+        </p>
+      </section>
+      <section>
+        <header
+          style={
+            Object {
+              "backgroundColor": "#BBBBBB",
+            }
+          }
+        >
+          <h3>
+            Find something to brag about.
+          </h3>
+        </header>
+        <p>
+          [
+          <em>
+            placeholder for screenshot of terrible restaurant
+          </em>
+          ]
+        </p>
+        <p>
+          Have your ever struggled to come up with interesting conversation with strangers and acquaintances
+                        you meet? How about something to talk about with your co-workers on monday? Worst Of is here to
+                        provide you with an unforgettable, mediocre to bad experience you'll love telling everyone
+                        about.
+        </p>
+      </section>
+      <section>
+        <header>
+          <h3>
+            Start discovering your low standards today
+          </h3>
+        </header>
+      </section>
+      <form
+        onSubmit={[Function]}
+      >
+        <div>
+          <label
+            htmlFor="first-name"
+          >
+            First name
+          </label>
+          <input
+            id="first-name"
+            name="first-name"
+          />
+        </div>
+        <div>
+          <label
+            htmlFor="last-name"
+          >
+            Last name
+          </label>
+          <input
+            id="last-name"
+            name="last-name"
+          />
+        </div>
+        <div>
+          <label
+            htmlFor="username"
+          >
+            Email
+          </label>
+          <input
+            id="username"
+            name="username"
+          />
+        </div>
+        <div>
+          <label
+            htmlFor="password"
+          >
+            Password
+          </label>
+          <input
+            id="password"
+            name="password"
+          />
+        </div>
+        <button
+          type="submit"
+        >
+          Sign Up
+        </button>
+      </form>
+    </div>
+  </section>,
+  ",",
+]
+`;
