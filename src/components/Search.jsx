@@ -2,6 +2,8 @@ import React, {useContext, useState} from 'react';
 import ThemeContext from "./ThemeContext";
 import Results from "./Results";
 import SearchForm from "./SearchForm";
+import Loader from 'react-loader-spinner';
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 
 export default function Search() {
 
@@ -11,6 +13,9 @@ export default function Search() {
     ///useState for yelp API results
     const [apiResults, setApiResults] = useState([{}]);
 
+    ///useState for loading spinner
+    const [loadingSpinner, setLoadingSpinner] = useState(false);
+
     //if no search has been made return no results
     function NoResults() {
         return <div></div>
@@ -18,11 +23,11 @@ export default function Search() {
 
     //if search returns results render results else return nothing
     function ResultsConditional() {
-        if (Object.keys(apiResults).length > 1) {
+        if (Object.keys(apiResults).length >= 1) {
             return <Results apiResults={apiResults}/>
         }
         else {
-            return <NoResults />;
+            return <NoResults/>;
         }
     }
 
@@ -33,10 +38,14 @@ export default function Search() {
                     <h1>Discover Mediocre</h1>
                 </header>
                 <section>
-                    <SearchForm setApiResults={setApiResults}/>
+                    <SearchForm
+                        setApiResults={setApiResults}
+                        setLoadingSpinner={setLoadingSpinner}
+                    />
                 </section>
             </div>
             <div>
+                <Loader type="TailSpin" color="grey" height={80} width={80} visible={loadingSpinner}/>
                 <ResultsConditional/>
             </div>
         </section>

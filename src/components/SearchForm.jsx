@@ -14,9 +14,6 @@ export default function SearchForm(props) {
     const context = useContext(ThemeContext);
     const formElementSpacing = context.formElementSpacing;
 
-    ///api authorization
-    // const apiToken = process.env.YELP_API_TOKEN;
-
     ///form input values populated by .map function
     const filterOptions = [
         {
@@ -46,7 +43,8 @@ export default function SearchForm(props) {
 
     ///onSubmit sending search for values via query string to back-end
     const onSubmit = () => {
-        console.log("params before axios get: ", termQuery,locationQuery, offsetQuery)
+        ///set loading spinner state
+        props.setLoadingSpinner(true)
         axios.get(`${config.API_ENDPOINT}/search?location=${locationQuery}&term=${termQuery}&limit=50&offset=${offsetQuery}`)
             .then((response) => {
                 let apiResults = [];
@@ -60,12 +58,14 @@ export default function SearchForm(props) {
                             response.data.map(business =>
                                 apiResults.push(business))
                             props.setApiResults(apiResults)
+                            props.setLoadingSpinner(false)
                         });
                 } else {
                     ///clean data before setting state with map to populate in results component
                     response.data.map(business =>
                         apiResults.push(business))
                     props.setApiResults(apiResults)
+                    props.setLoadingSpinner(false)
                 }
             })
             .catch(error => {
