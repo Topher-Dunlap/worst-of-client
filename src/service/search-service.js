@@ -1,6 +1,6 @@
 ///set loading spinner state
 import axios from "axios";
-import config from "./config";
+import config from "../config";
 
 export const axiosCall = (props, termQuery, locationQuery, offsetQuery) => {
     axios.get(`${config.API_ENDPOINT}/search?location=${locationQuery}&term=${termQuery}&limit=50&offset=${offsetQuery}`)

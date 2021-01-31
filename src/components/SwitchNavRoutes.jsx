@@ -3,6 +3,7 @@ import {Route, Switch} from 'react-router-dom';
 import Landing from "./Landing";
 import Login from "./Login";
 import Search from "./Search";
+import Register from "./Register";
 
 
 export default function SwitchNavRoutes() {
@@ -19,6 +20,10 @@ export default function SwitchNavRoutes() {
             <Route
                 path='/login'
                 component={Login}
+            />
+            <Route
+                path='/register'
+                component={Register}
             />
         </Switch>
     )

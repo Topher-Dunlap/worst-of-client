@@ -1,6 +1,7 @@
 import React from 'react';
 import {useForm} from "react-hook-form";
-import LoginFormInput from "./LandingFormInput";
+import LoginFormInput from "./RegisterFormInput";
+import TokenService from "../service/token-service";
 
 
 export default function LoginForm() {
@@ -16,7 +17,7 @@ export default function LoginForm() {
 
         user_name.value = ''
         password.value = ''
-        this.props.onLoginSuccess()
+        // this.props.onLoginSuccess()
     }
 
     const mapFormInputs = formOptions.map((option, idx) =>

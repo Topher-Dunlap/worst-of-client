@@ -1,9 +1,8 @@
 import React from 'react';
 import {useForm} from "react-hook-form";
-import LandingFormInput from "./LandingFormInput";
+import RegisterFormInput from "./RegisterFormInput";
 
-
-export default function LandingForm() {
+export default function RegisterForm() {
 
     const {handleSubmit} = useForm();
     const onSubmit = (data) => {
@@ -11,7 +10,7 @@ export default function LandingForm() {
     }
 
     const mapFormInputs = formOptions.map((option, idx) =>
-        <LandingFormInput
+        <RegisterFormInput
             key={idx}
             fieldLabel={option.fieldLabel}
             inputName={option.inputName}
@@ -20,6 +19,9 @@ export default function LandingForm() {
     )
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
+            <header style={headerStyle}>
+                <h1>Register</h1>
+            </header>
             {mapFormInputs}
             <button type='submit'>Sign Up</button>
         </form>
@@ -49,3 +51,8 @@ const formOptions = [
         type: "password",
     },
 ]
+
+const headerStyle = {
+    marginTop: "6rem",
+    marginBottom: "3rem",
+}

@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import ThemeContext from "./ThemeContext";
 import LandingSection from "./LandingSection";
-import LandingForm from "./LandingForm";
+import RegisterForm from "./RegisterForm";
 
 export default function Landing() {
 
@@ -30,7 +30,7 @@ export default function Landing() {
                         <h3>Start discovering your low standards today</h3>
                     </header>
                 </section>
-                <LandingForm />
+                <RegisterForm />
             </div>
         </section>
     )
