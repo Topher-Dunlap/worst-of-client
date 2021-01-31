@@ -6,8 +6,17 @@ import LoginFormInput from "./LandingFormInput";
 export default function LoginForm() {
 
     const {register, handleSubmit} = useForm();
-    const onSubmit = (data) => {
-        console.log(data)
+    const onSubmit = (ev) => {
+        ev.preventDefault()
+        const {user_name, password} = ev.target
+
+        TokenService.saveAuthToken(
+            TokenService.makeBasicAuthToken(user_name.value, password.value)
+        )
+
+        user_name.value = ''
+        password.value = ''
+        this.props.onLoginSuccess()
     }
 
     const mapFormInputs = formOptions.map((option, idx) =>
