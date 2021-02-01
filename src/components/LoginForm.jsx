@@ -7,15 +7,16 @@ import TokenService from "../service/token-service";
 export default function LoginForm() {
 
     const {register, handleSubmit} = useForm();
+
     const onSubmit = (ev) => {
         ev.preventDefault()
-        const {user_name, password} = ev.target
+        const {email, password} = ev.target
 
         TokenService.saveAuthToken(
-            TokenService.makeBasicAuthToken(user_name.value, password.value)
+            TokenService.makeBasicAuthToken(email.value, password.value)
         )
 
-        user_name.value = ''
+        email.value = ''
         password.value = ''
         // this.props.onLoginSuccess()
     }
@@ -29,7 +30,7 @@ export default function LoginForm() {
         />
     )
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={onSubmit}>
             <header style={headerStyle}>
                 <h1>Login</h1>
             </header>

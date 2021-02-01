@@ -1,14 +1,14 @@
+import React from 'react'
 import {Link} from "react-router-dom";
-
 
 const LogInOutService = {
 
 
-    RenderLogoutLink(setLoggedOutState) {
+    RenderLogoutLink() {
         return (
-            <div className='Header__logged-in'>
+            <div style={marginRight} className='Header__logged-in'>
                 <Link
-                    onClick={setLoggedOutState(true)}
+                    onClick={console.log("handleLogoutClick")}
                     to='/'>
                     Logout
                 </Link>

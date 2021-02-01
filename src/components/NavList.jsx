@@ -5,11 +5,11 @@ import LogInOutService from "../service/log-in-out-service"
 
 export default function NavList() {
 
-    const [loggedOutState, setLoggedOutState] = useState(true);
-
-    const HandleLogoutClick = () => {
-        console.log()
-    }
+    // const [loggedOutState, setLoggedOutState] = useState(true);
+    //
+    // const HandleLogoutClick = () => {
+    //     console.log()
+    // }
 
     //Map the Nav Buttons with data from filterOptions
     const mapNavRoutes = filterOptions.map((routeData, idx) =>
@@ -28,7 +28,7 @@ export default function NavList() {
             <div style={topNavRight}>
                 <ul>
                     {TokenService.hasAuthToken()
-                        ? LogInOutService.RenderLogoutLink(setLoggedOutState)
+                        ? LogInOutService.RenderLogoutLink()
                         : LogInOutService.RenderLoginLink()}
                 </ul>
             </div>

@@ -29,14 +29,14 @@ export default function SearchForm(props) {
     const onSubmit = () => {
         ///set loading spinner state
         props.setLoadingSpinner(true)
-        axios.get(`${config.API_ENDPOINT}/search?location=${locationQuery}&term=${termQuery}&limit=50&offset=${offsetQuery}`)
+        axios.get(`${config.API_ENDPOINT}/searchForm/search?location=${locationQuery}&term=${termQuery}&limit=50&offset=${offsetQuery}`)
             .then((response) => {
                 let apiResults = [];
                 ///conditional statements to create new get with updated offset query string if no results return
                 if (response.data > 0) {
                     let newOffsetQuery;
                     (response.data < 50) ? newOffsetQuery = 0 : newOffsetQuery = response.data - 1 ///conditional that sets offset query param
-                    axios.get(`${config.API_ENDPOINT}/search?location=${locationQuery}&term=${termQuery}&limit=50&offset=${newOffsetQuery}`)
+                    axios.get(`${config.API_ENDPOINT}/searchForm/search?location=${locationQuery}&term=${termQuery}&limit=50&offset=${newOffsetQuery}`)
                         .then((response) => {
                             ///clean data before setting state with map to populate in results component
                             response.data.map(business =>
