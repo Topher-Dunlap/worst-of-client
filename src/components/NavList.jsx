@@ -1,45 +1,46 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import NavListButtons from "./NavListButtons";
 import TokenService from '../service/token-service'
-import LogInOutService from "../service/log-in-out-service"
-// import {Link} from "react-router-dom";
+// import LogInOutService from "../service/log-in-out-service"
+import AuthContext from '../components/AuthContext'
+import {Link} from "react-router-dom";
 
 export default function NavList() {
 
-    // const HandleLogoutClick = () => {
-    //     TokenService.clearAuthToken()
-    // }
-    //
-    // function RenderLogoutLink() {
-    //     return (
-    //         <div style={marginRight} className='Header__logged-in'>
-    //             <Link
-    //                 onClick={HandleLogoutClick}
-    //                 to='/'>
-    //                 Logout
-    //             </Link>
-    //         </div>
-    //     )
-    // }
-    //
-    // function RenderLoginLink() {
-    //     return (
-    //         <div style={marginRight}>
-    //             <Link
-    //                 style={linkSpace}
-    //                 to='/register'>
-    //                 Register
-    //             </Link>
-    //             <Link
-    //                 style={linkSpace}
-    //                 to='/login'>
-    //                 Log in
-    //             </Link>
-    //         </div>
-    //     )
-    // }
+    const { loggedIn, setLoggedIn } = useContext(AuthContext);
+    const HandleLogoutClick = () => {
+        TokenService.clearAuthToken()
+        setLoggedIn(TokenService.hasAuthToken())
+    }
 
+    function RenderLogoutLink() {
+        return (
+            <div style={marginRight} className='Header__logged-in'>
+                <Link
+                    onClick={HandleLogoutClick}
+                    to='/'>
+                    Logout
+                </Link>
+            </div>
+        )
+    }
 
+    function RenderLoginLink() {
+        return (
+            <div style={marginRight}>
+                <Link
+                    style={linkSpace}
+                    to='/register'>
+                    Register
+                </Link>
+                <Link
+                    style={linkSpace}
+                    to='/login'>
+                    Log in
+                </Link>
+            </div>
+        )
+    }
 
     //Map the Nav Buttons with data from filterOptions
     const mapNavRoutes = filterOptions.map((routeData, idx) =>
@@ -57,9 +58,7 @@ export default function NavList() {
             </ul>
             <div style={topNavRight}>
                 <ul>
-                    {TokenService.hasAuthToken()
-                        ? LogInOutService.RenderLogoutLink()
-                        : LogInOutService.RenderLoginLink()}
+                    {loggedIn ? RenderLogoutLink() : RenderLoginLink()}
                 </ul>
             </div>
         </div>
@@ -78,22 +77,13 @@ const filterOptions = [
     },
 ]
 
-// const navContainer = {
-//     position: "fixed",
-//     top: 0,
-//     left: 0,
-//     right: 0,
-//     zIndex: 10,
-//     backgroundColor: "#aaa",
-// }
+const linkSpace = {
+    margin: "2.5rem 1rem"
+}
 
-// const linkSpace = {
-//     margin: "2.5rem 1rem"
-// }
-//
-// const marginRight = {
-//     marginRight: "2rem"
-// }
+const marginRight = {
+    marginRight: "2rem"
+}
 
 const topNav = {
     overflow: "hidden",

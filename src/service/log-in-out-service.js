@@ -1,12 +1,16 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import {Link} from "react-router-dom";
 import TokenService from "./token-service";
+import AuthContext from "../components/AuthContext";
+
 
 const LogInOutService = {
 
     RenderLogoutLink() {
+        const { setLoggedIn } = useContext(AuthContext)
         const HandleLogoutClick = () => {
-            TokenService.clearAuthToken()
+                TokenService.clearAuthToken()
+                setLoggedIn(TokenService.hasAuthToken())
         }
 
         return (

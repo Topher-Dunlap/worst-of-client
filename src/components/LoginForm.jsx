@@ -1,11 +1,13 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {useForm} from "react-hook-form";
 import LoginFormInput from "./RegisterFormInput";
+import AuthContext from '../components/AuthContext'
 import TokenService from "../service/token-service";
 
 
 export default function LoginForm() {
 
+    const { setLoggedIn } = useContext(AuthContext);
     const {register, handleSubmit} = useForm();
 
     const onSubmit = (ev) => {
@@ -15,6 +17,8 @@ export default function LoginForm() {
         TokenService.saveAuthToken(
             TokenService.makeBasicAuthToken(email.value, password.value)
         )
+
+        setLoggedIn(TokenService.hasAuthToken())
 
         email.value = ''
         password.value = ''
