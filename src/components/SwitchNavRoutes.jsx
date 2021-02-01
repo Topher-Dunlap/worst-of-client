@@ -1,9 +1,11 @@
 import React from 'react';
 import {Route, Switch} from 'react-router-dom';
+import PrivateRoute from '../Utils/PrivateRoute'
 import Landing from "./Landing";
 import Login from "./Login";
 import Search from "./Search";
 import Register from "./Register";
+import NotFoundPage from "./NotFoundPage";
 
 
 export default function SwitchNavRoutes() {
@@ -13,7 +15,7 @@ export default function SwitchNavRoutes() {
                 exact path="/"
                 component={Landing}
             />
-            <Route
+            <PrivateRoute
                 path='/search'
                 component={Search}
             />
@@ -24,6 +26,9 @@ export default function SwitchNavRoutes() {
             <Route
                 path='/register'
                 component={Register}
+            />
+            <Route
+                component={NotFoundPage}
             />
         </Switch>
     )

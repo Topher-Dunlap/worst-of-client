@@ -1,15 +1,45 @@
-import React, { useState } from 'react';
+import React from 'react';
 import NavListButtons from "./NavListButtons";
 import TokenService from '../service/token-service'
 import LogInOutService from "../service/log-in-out-service"
+// import {Link} from "react-router-dom";
 
 export default function NavList() {
 
-    // const [loggedOutState, setLoggedOutState] = useState(true);
-    //
     // const HandleLogoutClick = () => {
-    //     console.log()
+    //     TokenService.clearAuthToken()
     // }
+    //
+    // function RenderLogoutLink() {
+    //     return (
+    //         <div style={marginRight} className='Header__logged-in'>
+    //             <Link
+    //                 onClick={HandleLogoutClick}
+    //                 to='/'>
+    //                 Logout
+    //             </Link>
+    //         </div>
+    //     )
+    // }
+    //
+    // function RenderLoginLink() {
+    //     return (
+    //         <div style={marginRight}>
+    //             <Link
+    //                 style={linkSpace}
+    //                 to='/register'>
+    //                 Register
+    //             </Link>
+    //             <Link
+    //                 style={linkSpace}
+    //                 to='/login'>
+    //                 Log in
+    //             </Link>
+    //         </div>
+    //     )
+    // }
+
+
 
     //Map the Nav Buttons with data from filterOptions
     const mapNavRoutes = filterOptions.map((routeData, idx) =>
@@ -55,6 +85,14 @@ const filterOptions = [
 //     right: 0,
 //     zIndex: 10,
 //     backgroundColor: "#aaa",
+// }
+
+// const linkSpace = {
+//     margin: "2.5rem 1rem"
+// }
+//
+// const marginRight = {
+//     marginRight: "2rem"
 // }
 
 const topNav = {
