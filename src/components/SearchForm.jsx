@@ -43,7 +43,7 @@ export default function SearchForm(props) {
                     (response.data < 50) ? newOffsetQuery = 0 : newOffsetQuery = response.data - 1 ///conditional that sets offset query param
                     axios.get(`${config.API_ENDPOINT}/searchForm/search?location=${locationQuery}&term=${termQuery}&limit=50&offset=${newOffsetQuery}`,{
                         headers: {
-                            'authorization': `basic ${TokenService.getAuthToken()}`,
+                            'authorization': `bearer ${TokenService.getAuthToken()}`,
                         }
                     })
                         .then((response) => {
