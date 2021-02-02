@@ -16,6 +16,20 @@ export default function ResultsItem(props) {
     const businessImage = props.image_url
     const yelpLink = props.url
     const location = props.location
+    const review = props.review
+
+    console.log(review)
+
+    ///replace any \n with <br>
+    // function reviewParse() {
+    //     if(review) {
+    //         console.log(review)
+    //         return review.split ('\n').map ((item, i) => <p key={i}>{item}</p>);
+    //     }
+    //     else {
+    //         return <p></p>
+    //     }
+    // }
 
     ///create list display for business address
     const addressMap = location.display_address.map((line, idx) =>
@@ -37,6 +51,7 @@ export default function ResultsItem(props) {
                         src={businessImage}
                     />
                 </a>
+                <p style={pStyle}>{review}</p>
                 <ul style={innerListStyle}>
                     <h3>Address</h3>
                     {addressMap}
@@ -47,8 +62,6 @@ export default function ResultsItem(props) {
 }
 
 const imageStyle = {
-    // width: "75%",
-    // height: "auto",
     width: "250px",
     height: "250px",
 }
@@ -60,6 +73,9 @@ const innerListStyle = {
     height: "75%",
 }
 
+const pStyle = {
+    margin: "1rem 3rem",
+}
 const resultsStyle = {
     listStyleType: "none",
     textAlign: "center",

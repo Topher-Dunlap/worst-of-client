@@ -32,7 +32,7 @@ export default function SearchForm(props) {
         props.setLoadingSpinner(true)
         axios.get(`${config.API_ENDPOINT}/searchForm/search?location=${locationQuery}&term=${termQuery}&limit=50&offset=${offsetQuery}`,{
             headers: {
-                'authorization': `basic ${TokenService.getAuthToken()}`,
+                'authorization': `bearer ${TokenService.getAuthToken()}`,
             }
         })
             .then((response) => {

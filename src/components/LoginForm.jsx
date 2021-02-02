@@ -31,17 +31,14 @@ export default function LoginForm() {
             .catch(error => {
                 console.error({error})
             })
-
-        // TokenService.saveAuthToken(
-        //     TokenService.makeBasicAuthToken(email.value, password.value)
-        // )
-
-        // setLoggedIn(TokenService.hasAuthToken())
-
-        // email.value = ''
-        // password.value = ''
-        // this.props.onLoginSuccess()
     }
+
+    function loginSuccess() {
+        if(TokenService.hasAuthToken()){
+            return <h3 style={{color: "green"}}>You're logged in!</h3>
+        }
+    }
+
 
     const mapFormInputs = formOptions.map((option, idx) =>
         <LoginFormInput
@@ -56,14 +53,15 @@ export default function LoginForm() {
             <header style={headerStyle}>
                 <h1>Login</h1>
             </header>
+            {loginSuccess()}
             <div>
                 {mapFormInputs}
                 <button type="submit">Login</button>
-                <br/>
-                <input ref={register} type="checkbox" name="remember-me" value="true"/>
-                <label>
-                    <span>Remember Me</span>
-                </label>
+                {/*<br/>*/}
+                {/*<input ref={register} type="checkbox" name="remember-me" value="true"/>*/}
+                {/*<label>*/}
+                {/*    <span>Remember Me</span>*/}
+                {/*</label>*/}
             </div>
         </form>
     )

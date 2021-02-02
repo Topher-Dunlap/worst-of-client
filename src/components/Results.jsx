@@ -12,6 +12,7 @@ export default function Results(props) {
             image_url={business.image_url}
             url={business.url}
             location={business.location}
+            review={business.review}
         />
     )
 
