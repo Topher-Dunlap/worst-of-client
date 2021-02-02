@@ -1,27 +1,45 @@
 import React, {useContext} from 'react';
 import {useForm} from "react-hook-form";
 import LoginFormInput from "./RegisterFormInput";
-import AuthContext from '../components/AuthContext'
+import AuthContext from '../components/AuthContext';
+import AuthApiService from '../service/auth-api-service'
 import TokenService from "../service/token-service";
 
 
 export default function LoginForm() {
 
-    const { setLoggedIn } = useContext(AuthContext);
+    const {setLoggedIn} = useContext(AuthContext);
     const {register, handleSubmit} = useForm();
 
-    const onSubmit = (ev) => {
+    const handleSubmitJwtAuth = (ev) => {
         ev.preventDefault()
         const {email, password} = ev.target
+        console.log(email, password)
 
-        TokenService.saveAuthToken(
-            TokenService.makeBasicAuthToken(email.value, password.value)
-        )
+        AuthApiService.postLogin({
+            email: email.value,
+            password: password.value,
+        })
+            .then(res => {
+                email.value = ''
+                password.value = ''
+                TokenService.saveAuthToken(res.authToken)
+                setLoggedIn(TokenService.hasAuthToken())
+                console.log("login success")
+                // this.props.onLoginSuccess()
+            })
+            .catch(error => {
+                console.error({error})
+            })
 
-        setLoggedIn(TokenService.hasAuthToken())
+        // TokenService.saveAuthToken(
+        //     TokenService.makeBasicAuthToken(email.value, password.value)
+        // )
 
-        email.value = ''
-        password.value = ''
+        // setLoggedIn(TokenService.hasAuthToken())
+
+        // email.value = ''
+        // password.value = ''
         // this.props.onLoginSuccess()
     }
 
@@ -34,7 +52,7 @@ export default function LoginForm() {
         />
     )
     return (
-        <form onSubmit={onSubmit}>
+        <form onSubmit={handleSubmitJwtAuth}>
             <header style={headerStyle}>
                 <h1>Login</h1>
             </header>
