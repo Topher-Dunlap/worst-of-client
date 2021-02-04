@@ -18,7 +18,7 @@ export default function NavList() {
         if (loggedInUser) {
             setLoggedIn(true);
         }
-    }, []);
+    }, );
 
     function RenderLogoutLink() {
         return (
