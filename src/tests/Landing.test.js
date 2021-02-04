@@ -4,7 +4,7 @@ import Landing from '../components/Landing';
 import ThemeContext from "../components/ThemeContext";
 import renderer from 'react-test-renderer';
 
-xdescribe(`Landing component`, () => {
+describe(`Landing component`, () => {
 
     const backgroundColors = [
         {backgroundColor: "#AAAAAA"},
