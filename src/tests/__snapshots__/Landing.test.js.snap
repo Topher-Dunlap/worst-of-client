@@ -22,7 +22,7 @@ Array [
         <header
           style={
             Object {
-              "backgroundColor": "#EEEEEE",
+              "backgroundColor": "#BBBBBB",
             }
           }
         >
@@ -47,7 +47,7 @@ Array [
         <header
           style={
             Object {
-              "backgroundColor": "#BBBBBB",
+              "backgroundColor": "#EEEEEE",
             }
           }
         >
@@ -79,37 +79,49 @@ Array [
       <form
         onSubmit={[Function]}
       >
+        <header
+          style={
+            Object {
+              "marginBottom": "3rem",
+              "marginTop": "6rem",
+            }
+          }
+        >
+          <h1>
+            Register
+          </h1>
+        </header>
         <div>
           <label
-            htmlFor="first-name"
+            htmlFor="first_name"
           >
             First name
           </label>
           <input
-            id="first-name"
-            name="first-name"
+            id="first_name"
+            name="first_name"
           />
         </div>
         <div>
           <label
-            htmlFor="last-name"
+            htmlFor="last_name"
           >
             Last name
           </label>
           <input
-            id="last-name"
-            name="last-name"
+            id="last_name"
+            name="last_name"
           />
         </div>
         <div>
           <label
-            htmlFor="username"
+            htmlFor="email"
           >
             Email
           </label>
           <input
-            id="username"
-            name="username"
+            id="email"
+            name="email"
           />
         </div>
         <div>
@@ -129,6 +141,38 @@ Array [
           Sign Up
         </button>
       </form>
+      <div
+        style={
+          Object {
+            "borderColor": "#000000",
+            "borderWidth": "thin",
+            "fontSize": "medium",
+            "margin": "6rem 0",
+          }
+        }
+      >
+        <h3>
+          Password Requirements
+        </h3>
+        <ul
+          style={
+            Object {
+              "listStylePosition": "inside",
+              "textAlign": "center",
+            }
+          }
+        >
+          <li>
+            Password must contain 1 upper case, lower case, number and special character
+          </li>
+          <li>
+            Password must be longer than 8 characters
+          </li>
+          <li>
+            Password must be less than 72 characters
+          </li>
+        </ul>
+      </div>
     </div>
   </section>,
   ",",
