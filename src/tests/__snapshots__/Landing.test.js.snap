@@ -22,7 +22,7 @@ Array [
         <header
           style={
             Object {
-              "backgroundColor": "#BBBBBB",
+              "backgroundColor": "#EEEEEE",
             }
           }
         >
@@ -47,7 +47,7 @@ Array [
         <header
           style={
             Object {
-              "backgroundColor": "#EEEEEE",
+              "backgroundColor": "#AAAAAA",
             }
           }
         >
