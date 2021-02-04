@@ -1,6 +1,7 @@
 import React, {useContext} from 'react';
 import ThemeContext from "./ThemeContext";
 import RatingImages from "./RatingImages";
+import noImg from "../images/no-img.png"
 
 export default function ResultsItem(props) {
 
@@ -17,19 +18,6 @@ export default function ResultsItem(props) {
     const yelpLink = props.url
     const location = props.location
     const review = props.review
-
-    console.log(review)
-
-    ///replace any \n with <br>
-    // function reviewParse() {
-    //     if(review) {
-    //         console.log(review)
-    //         return review.split ('\n').map ((item, i) => <p key={i}>{item}</p>);
-    //     }
-    //     else {
-    //         return <p></p>
-    //     }
-    // }
 
     ///create list display for business address
     const addressMap = location.display_address.map((line, idx) =>
@@ -48,7 +36,7 @@ export default function ResultsItem(props) {
                     <img
                         style={imageStyle}
                         alt="business"
-                        src={businessImage}
+                        src={businessImage ? businessImage : noImg}
                     />
                 </a>
                 <p style={pStyle}>{review}</p>

@@ -1,13 +1,41 @@
 import React from 'react';
-import {useForm} from "react-hook-form";
+// import {useForm} from "react-hook-form";
+import AuthApiService from '../service/auth-api-service'
 import RegisterFormInput from "./RegisterFormInput";
 
 export default function RegisterForm() {
 
-    const {handleSubmit} = useForm();
-    const onSubmit = (data) => {
-        console.log(data)
+    // const {handleSubmit} = useForm();
+    const handleRegSubmit = (ev) => {
+
+        console.log("event targets", ev)
+        // ev.preventDefault()
+        const {first_name, last_name, email, password} = ev.target
+        // AuthApiService.passwordReq(password)
+
+        // this.setState({error: null})
+        AuthApiService.postUser({
+            first_name: first_name.value,
+            last_name: last_name.value,
+            email: email.value,
+            password: password.value,
+        })
+            .then(user => {
+                first_name.value = ''
+                last_name.value = ''
+                email.value = ''
+                password.value = ''
+                console.log("post user server res: ", user)
+                // this.props.onRegistrationSuccess()
+            })
+            .catch(error => {
+                console.error({error})
+            })
     }
+
+    // function renderPasswordError(password) {
+    //     AuthApiService.passwordReq(password)
+    // }
 
     const mapFormInputs = formOptions.map((option, idx) =>
         <RegisterFormInput
@@ -17,8 +45,9 @@ export default function RegisterForm() {
             type={option.type}
         />
     )
+
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleRegSubmit}>
             <header style={headerStyle}>
                 <h1>Register</h1>
             </header>
@@ -32,17 +61,17 @@ export default function RegisterForm() {
 const formOptions = [
     {
         fieldLabel: "First name",
-        inputName: "first-name",
+        inputName: "first_name",
         type: "text",
     },
     {
         fieldLabel: "Last name",
-        inputName: "last-name",
+        inputName: "last_name",
         type: "text",
     },
     {
         fieldLabel: "Email",
-        inputName: "username",
+        inputName: "email",
         type: "text",
     },
     {

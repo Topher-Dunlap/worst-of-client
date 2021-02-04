@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 import NavListButtons from "./NavListButtons";
 import TokenService from '../service/token-service'
 // import LogInOutService from "../service/log-in-out-service"
@@ -12,6 +12,13 @@ export default function NavList() {
         TokenService.clearAuthToken()
         setLoggedIn(TokenService.hasAuthToken())
     }
+
+    useEffect(() => {
+        const loggedInUser = localStorage.getItem("worst-of-client-auth-token");
+        if (loggedInUser) {
+            setLoggedIn(true);
+        }
+    }, []);
 
     function RenderLogoutLink() {
         return (

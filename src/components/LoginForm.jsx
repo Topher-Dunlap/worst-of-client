@@ -1,20 +1,23 @@
-import React, {useContext} from 'react';
-import {useForm} from "react-hook-form";
+import React, {useContext, useState} from 'react';
 import LoginFormInput from "./RegisterFormInput";
 import AuthContext from '../components/AuthContext';
 import AuthApiService from '../service/auth-api-service'
 import TokenService from "../service/token-service";
+import {useForm} from "react-hook-form";
+import ThemeContext from "./ThemeContext";
 
 
 export default function LoginForm() {
 
     const {setLoggedIn} = useContext(AuthContext);
-    const {register, handleSubmit} = useForm();
+    const {register, errors} = useForm();
+    const [errorState, setErrorState] = useState("")
+    const context = useContext(ThemeContext);
+    const formElementSpacing = context.formElementSpacing;
 
     const handleSubmitJwtAuth = (ev) => {
         ev.preventDefault()
         const {email, password} = ev.target
-        console.log(email, password)
 
         AuthApiService.postLogin({
             email: email.value,
@@ -25,20 +28,13 @@ export default function LoginForm() {
                 password.value = ''
                 TokenService.saveAuthToken(res.authToken)
                 setLoggedIn(TokenService.hasAuthToken())
-                console.log("login success")
                 // this.props.onLoginSuccess()
             })
             .catch(error => {
                 console.error({error})
+                setErrorState(error.error)
             })
     }
-
-    function loginSuccess() {
-        if(TokenService.hasAuthToken()){
-            return <h3 style={{color: "green"}}>You're logged in!</h3>
-        }
-    }
-
 
     const mapFormInputs = formOptions.map((option, idx) =>
         <LoginFormInput
@@ -53,15 +49,27 @@ export default function LoginForm() {
             <header style={headerStyle}>
                 <h1>Login</h1>
             </header>
-            {loginSuccess()}
+            {
+                TokenService.hasAuthToken() ?
+                <h3 style={{color: "green"}}>You're logged in!</h3> :
+                <h4 style={{color: "red"}}>{errorState}</h4>
+            }
             <div>
                 {mapFormInputs}
+                {/*////password input was manually added due to but with mapping stripping password "type"*/}
+                <div>
+                    <label
+                        style={formElementSpacing}>
+                        Password
+                    </label>
+                    <input
+                        ref={register({required: true, minLength: 2})}
+                        name="password"
+                        type="password"/>
+                    <br/>
+                    {errors.inputName && <p style={{color: "red"}}>This is required</p>}
+                </div>
                 <button type="submit">Login</button>
-                {/*<br/>*/}
-                {/*<input ref={register} type="checkbox" name="remember-me" value="true"/>*/}
-                {/*<label>*/}
-                {/*    <span>Remember Me</span>*/}
-                {/*</label>*/}
             </div>
         </form>
     )
@@ -78,10 +86,5 @@ const formOptions = [
         fieldLabel: "E-Mail",
         inputName: "email",
         type: "text",
-    },
-    {
-        fieldLabel: "Password",
-        inputName: "password",
-        type: "password",
     },
 ]

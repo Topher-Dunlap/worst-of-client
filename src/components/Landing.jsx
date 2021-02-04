@@ -2,6 +2,7 @@ import React, {useContext} from 'react';
 import ThemeContext from "./ThemeContext";
 import LandingSection from "./LandingSection";
 import RegisterForm from "./RegisterForm";
+import PasswordReq from "./PasswordReq";
 
 export default function Landing() {
 
@@ -31,6 +32,7 @@ export default function Landing() {
                     </header>
                 </section>
                 <RegisterForm />
+                <PasswordReq />
             </div>
         </section>
     )

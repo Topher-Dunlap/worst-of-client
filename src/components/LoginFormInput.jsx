@@ -22,7 +22,7 @@ export default function LoginFormInput(props) {
                 name={inputName}
                 type={typeName}/>
             <br/>
-            {errors.inputName && <p>This is required</p>}
+            {errors.inputName && <p style={{color: "red"}}>This is required</p>}
         </div>
     )
 }

@@ -3,7 +3,7 @@ import ThemeContext from "./ThemeContext";
 import Results from "./Results";
 import SearchForm from "./SearchForm";
 import Loader from 'react-loader-spinner';
-import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 export default function Search() {
 
@@ -23,7 +23,6 @@ export default function Search() {
 
     //if search returns results render results else return nothing
     function ResultsConditional() {
-        console.log(apiResults)
         if (apiResults.length !== 0) {
             return <Results apiResults={apiResults}/>
         }

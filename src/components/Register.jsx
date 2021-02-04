@@ -1,6 +1,7 @@
 import React, {useContext} from 'react';
 import ThemeContext from "./ThemeContext";
 import RegisterForm from "./RegisterForm";
+import PasswordReq from "./PasswordReq";
 
 export default function Login() {
 
@@ -10,6 +11,7 @@ export default function Login() {
     return (
         <section style={theme}>
             <RegisterForm />
+            <PasswordReq />
         </section>
     )
 }
