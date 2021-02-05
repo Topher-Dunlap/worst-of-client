@@ -1,19 +1,14 @@
 import React from 'react';
-// import {useForm} from "react-hook-form";
 import AuthApiService from '../service/auth-api-service'
 import RegisterFormInput from "./RegisterFormInput";
 
 export default function RegisterForm() {
 
-    // const {handleSubmit} = useForm();
     const handleRegSubmit = (ev) => {
 
         console.log("event targets", ev)
-        // ev.preventDefault()
         const {first_name, last_name, email, password} = ev.target
-        // AuthApiService.passwordReq(password)
 
-        // this.setState({error: null})
         AuthApiService.postUser({
             first_name: first_name.value,
             last_name: last_name.value,
@@ -32,10 +27,6 @@ export default function RegisterForm() {
                 console.error({error})
             })
     }
-
-    // function renderPasswordError(password) {
-    //     AuthApiService.passwordReq(password)
-    // }
 
     const mapFormInputs = formOptions.map((option, idx) =>
         <RegisterFormInput
