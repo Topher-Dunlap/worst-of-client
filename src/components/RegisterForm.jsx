@@ -6,7 +6,6 @@ export default function RegisterForm() {
 
     const handleRegSubmit = (ev) => {
 
-        console.log("event targets", ev)
         const {first_name, last_name, email, password} = ev.target
 
         AuthApiService.postUser({
@@ -20,7 +19,6 @@ export default function RegisterForm() {
                 last_name.value = ''
                 email.value = ''
                 password.value = ''
-                console.log("post user server res: ", user)
                 // this.props.onRegistrationSuccess()
             })
             .catch(error => {
