@@ -26,19 +26,19 @@ export default function ResultsItem(props) {
         </li>
     )
 
-    return(
+    return (
         <li style={resultsStyle}>
             <div style={backgroundColorPicker}>
-                <h2>{businessName}</h2>
+                <a href={yelpLink} target="_blank" rel="noopener noreferrer">
+                    <h2>{businessName}</h2>
+                </a>
                 <RatingImages businessRating={businessRating}/>
                 <br/>
-                <a href={yelpLink} target="_blank" rel="noopener noreferrer">
-                    <img
-                        style={imageStyle}
-                        alt="business"
-                        src={businessImage ? businessImage : noImg}
-                    />
-                </a>
+                <img
+                    style={imageStyle}
+                    alt="business"
+                    src={businessImage ? businessImage : noImg}
+                />
                 <p style={pStyle}>{review}</p>
                 <ul style={innerListStyle}>
                     <h3>Address</h3>
