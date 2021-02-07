@@ -1,15 +1,16 @@
 import React, {useContext} from 'react';
-import ThemeContext from "./ThemeContext";
+// import ThemeContext from "./ThemeContext";
 import RatingImages from "./RatingImages";
+import ResultsReview from "./ResultsReview";
 import noImg from "../images/no-img.png"
 
 export default function ResultsItem(props) {
 
     ///generates random background color from context
-    const context = useContext(ThemeContext);
-    const backgroundColor = context.backgroundColors;
-    const randomColorNum = Math.floor(Math.random() * Math.floor(3));
-    const backgroundColorPicker = backgroundColor[randomColorNum]
+    // const context = useContext(ThemeContext);
+    // const backgroundColor = context.backgroundColors;
+    // const randomColorNum = Math.floor(Math.random() * Math.floor(3));
+    // const backgroundColorPicker = backgroundColor[randomColorNum]
 
     ///prop values
     const businessName = props.name
@@ -17,7 +18,12 @@ export default function ResultsItem(props) {
     const businessImage = props.image_url
     const yelpLink = props.url
     const location = props.location
+    const locationLong = props.locationLong
+    const locationLat = props.locationLat
     const review = props.review
+    const reviewUrl = props.reviewUrl
+    const reviewerImg = props.reviewerImg
+    const googleMapsURL = `https://maps.google.com/?q=${locationLat},${locationLong}`
 
     ///create list display for business address
     const addressMap = location.display_address.map((line, idx) =>
@@ -26,9 +32,25 @@ export default function ResultsItem(props) {
         </li>
     )
 
+    ///conditional render for review
+    const insertReviews = () => {
+        if (review) {
+            return (
+                <ResultsReview
+                    reviewerImg={reviewerImg}
+                    reviewUrl={reviewUrl}
+                    review={review}
+                />
+            )
+        }
+        else {
+            return <p>Reviews Not Available</p>
+        }
+    }
+
     return (
         <li style={resultsStyle}>
-            <div style={backgroundColorPicker}>
+            <div style={resultsDivStyle}>
                 <a href={yelpLink} target="_blank" rel="noopener noreferrer">
                     <h2>{businessName}</h2>
                 </a>
@@ -39,10 +61,12 @@ export default function ResultsItem(props) {
                     alt="business"
                     src={businessImage ? businessImage : noImg}
                 />
-                <p style={pStyle}>{review}</p>
+                {insertReviews()}
                 <ul style={innerListStyle}>
                     <h3>Address</h3>
-                    {addressMap}
+                    <a href={googleMapsURL} target="_blank" rel="noopener noreferrer">
+                        {addressMap}
+                    </a>
                 </ul>
             </div>
         </li>
@@ -52,22 +76,37 @@ export default function ResultsItem(props) {
 const imageStyle = {
     width: "250px",
     height: "250px",
+    borderStyle: "solid",
+    borderWidth: "thin",
 }
 
 const innerListStyle = {
     listStyleType: "none",
     textAlign: "center",
     padding: "0",
+    margin: "0",
     height: "75%",
 }
 
-const pStyle = {
-    margin: "1rem 3rem",
-}
 const resultsStyle = {
     listStyleType: "none",
     textAlign: "center",
-    padding: "0",
-    margin: "5rem auto",
+    padding: "2rem",
+    margin: "1rem .5rem",
     height: "75%",
+    borderRadius: "5px",
+}
+
+const resultsDivStyle = {
+    borderRadius: "5px",
+    backgroundColor: "#FFFFFF",
+    // backgroundColor: "#FCF3F4",
+    padding: "3rem 0",
+    boxShadow:
+        `0 2.8px 1.2px rgba(0, 0, 0, 0.034),
+        0 6.7px 2.3px rgba(0, 0, 0, 0.048),
+        0 12.5px 4px rgba(0, 0, 0, 0.06),
+        0 22.3px 6.9px rgba(0, 0, 0, 0.072),
+        0 41.8px 8.4px rgba(0, 0, 0, 0.086),
+        0 100px 100px rgba(0, 0, 0, 0.12)`
 }

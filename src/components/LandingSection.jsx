@@ -19,8 +19,14 @@ export default function LandingSection(props) {
             <header style={backgroundColorPicker}>
                 <h3>{headerContent}</h3>
             </header>
-            <p>[<em>{sectionImage}</em>]</p>
+            <img style={imgStyle} alt={"bar"} src={sectionImage}/>
             <p>{pContent}</p>
         </section>
     )
+}
+
+const imgStyle = {
+    height: "100%",
+    width: "100%",
+    margin: "0",
 }

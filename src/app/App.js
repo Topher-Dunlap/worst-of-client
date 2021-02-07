@@ -28,11 +28,12 @@ function App() {
 
 const contextValue = {
     theme: {
-        fontFamily: "Open Sans, sans-serif",
+        // fontFamily: "Open Sans, sans-serif",
         fontSize: "20px",
         color: "#444",
         textAlign: "center",
         lineHeight: "1.5",
+        margin: "1rem",
     },
     formElementSpacing: {
         margin: "0px 10px",

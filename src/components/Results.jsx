@@ -12,13 +12,17 @@ export default function Results(props) {
             image_url={business.image_url}
             url={business.url}
             location={business.location}
+            locationLong={business.coordinates.longitude}
+            locationLat={business.coordinates.latitude}
             review={business.review}
+            reviewUrl={business.reviewUrl}
+            reviewerImg={business.reviewerImg}
         />
     )
 
     return (
-        <section>
-            <h1 style={bottomMargin}>Results</h1>
+        <section style={resultsColor}>
+            <h1 style={headerStyle}>Results</h1>
             <ul style={listStyle}>
                 {mapResultsItem}
             </ul>
@@ -26,9 +30,16 @@ export default function Results(props) {
     )
 }
 
-const bottomMargin = {
+const headerStyle = {
+    color: "white",
+    fontSize: "3rem",
     textAlign: "center",
-    marginBottom: "2rem",
+    paddingTop: "3rem",
+    marginTop: "2rem",
+}
+
+const resultsColor = {
+    backgroundColor: "#3A506B",
 }
 
 const listStyle = {

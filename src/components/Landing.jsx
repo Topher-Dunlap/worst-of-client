@@ -3,6 +3,8 @@ import ThemeContext from "./ThemeContext";
 import LandingSection from "./LandingSection";
 import RegisterForm from "./RegisterForm";
 import PasswordReq from "./PasswordReq";
+import diveBar from "../images/diveBar.png"
+import badRest from "../images/badRest.png"
 
 export default function Landing() {
 
@@ -22,8 +24,7 @@ export default function Landing() {
         <section style={theme}>
             <div>
                 <span>
-                    <h1 style={headerMargin}>Worst Of</h1>
-                    <h2>Find adventure in any City.</h2>
+                    <h2 style={headerMargin}>Find adventure in any City.</h2>
                 </span>
                 {sectionMap}
                 <section>
@@ -48,7 +49,7 @@ const sectionData = [
         pContent: `Worst Of helps you discover the lowest rated, restaurants, bars and coffee shops in your area.
                         Have you and your friends found yourselves with nothing to do on a friday night? Now's your
                         chance at rolling the fun dice on finding a new local favorite that you may love to hate!`,
-        sectionImage: "placeholder for screenshot of a dive bar",
+        sectionImage: diveBar,
     },
     {
         headerContent: "Find something to brag about.",
@@ -56,6 +57,6 @@ const sectionData = [
                         you meet? How about something to talk about with your co-workers on monday? Worst Of is here to
                         provide you with an unforgettable, mediocre to bad experience you'll love telling everyone
                         about.`,
-        sectionImage: "placeholder for screenshot of terrible restaurant",
+        sectionImage: badRest,
     }
 ]

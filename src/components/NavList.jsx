@@ -1,13 +1,12 @@
 import React, {useContext, useEffect} from 'react';
 import NavListButtons from "./NavListButtons";
 import TokenService from '../service/token-service'
-// import LogInOutService from "../service/log-in-out-service"
 import AuthContext from '../components/AuthContext'
 import {Link} from "react-router-dom";
 
 export default function NavList() {
 
-    const { loggedIn, setLoggedIn } = useContext(AuthContext);
+    const {loggedIn, setLoggedIn} = useContext(AuthContext);
     const HandleLogoutClick = () => {
         TokenService.clearAuthToken()
         setLoggedIn(TokenService.hasAuthToken())
@@ -18,23 +17,21 @@ export default function NavList() {
         if (loggedInUser) {
             setLoggedIn(true);
         }
-    }, );
+    },);
 
     function RenderLogoutLink() {
         return (
-            <div style={marginRight} className='Header__logged-in'>
                 <Link
                     onClick={HandleLogoutClick}
                     to='/'>
                     Logout
                 </Link>
-            </div>
         )
     }
 
     function RenderLoginLink() {
         return (
-            <div style={marginRight}>
+            <div>
                 <Link
                     style={linkSpace}
                     to='/register'>
@@ -60,19 +57,20 @@ export default function NavList() {
 
     return (
         <div style={topNav}>
-            <ul style={topNavLeft}>
+            {/*<ul style={topNavLeft}>*/}
+            {/*    {mapNavRoutes}*/}
+            {/*    {loggedIn ? RenderLogoutLink() : RenderLoginLink()}*/}
+            {/*</ul>*/}
+            <div style={myLinks}>
                 {mapNavRoutes}
-            </ul>
-            <div style={topNavRight}>
-                <ul>
-                    {loggedIn ? RenderLogoutLink() : RenderLoginLink()}
-                </ul>
+                {loggedIn ? RenderLogoutLink() : RenderLoginLink()}
             </div>
+            <h1 style={headerStyle}>Worst Of</h1>
         </div>
     )
 }
 
-//data used to populate nav buttons
+//data used to populate nav Links
 const filterOptions = [
     {
         routeName: "About",
@@ -84,20 +82,37 @@ const filterOptions = [
     },
 ]
 
+const headerStyle = {
+    color: "white",
+    margin: "2rem",
+    textAlign: "center",
+    justifyContent: "center",
+}
+
+const myLinks = {
+    display: "none",
+}
+
 const linkSpace = {
     margin: "2.5rem 1rem"
 }
 
 const marginRight = {
-    marginRight: "2rem"
+    marginRight: "2rem",
+    display: "inline-block",
 }
 
 const topNav = {
-    overflow: "hidden",
-    backgroundColor: "#aaa",
+    // overflow: "hidden",
+    backgroundColor: "#0B132B",
+    // display: "inline",
+    display: "flex",
+    border: "1px solid black",
+    // justifyContent: "center",
 }
 
 const topNavLeft = {
+    display: "inline-block",
     float: "left",
     color: "#f2f2f2",
     textAlign: "center",
@@ -107,5 +122,6 @@ const topNavLeft = {
 }
 
 const topNavRight = {
+    display: "inline-block",
     float: "right"
 }

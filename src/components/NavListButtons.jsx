@@ -15,7 +15,7 @@ export default function NavList(props) {
                     fontWeight: "bold",
                     color: "#B3A577"
                 }}>
-                {/*<button image/>  imported image*/} {routeName}
+                {routeName}
             </NavLink>
         </button>
     )
