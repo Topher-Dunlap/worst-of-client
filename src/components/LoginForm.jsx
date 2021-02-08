@@ -12,8 +12,13 @@ export default function LoginForm() {
     const {setLoggedIn} = useContext(AuthContext);
     const {register, errors} = useForm();
     const [errorState, setErrorState] = useState("")
+
     const context = useContext(ThemeContext);
+    const formStyle = context.formStyle;
     const formElementSpacing = context.formElementSpacing;
+    const centerText = context.centerText;
+    const formButtonStyle = context.formButtonStyle;
+    const formInputStyle = context.formInputStyle;
 
     const handleSubmitJwtAuth = (ev) => {
         ev.preventDefault()
@@ -45,39 +50,45 @@ export default function LoginForm() {
         />
     )
     return (
-        <form onSubmit={handleSubmitJwtAuth}>
-            <header style={headerStyle}>
-                <h1>Login</h1>
-            </header>
-            {
-                TokenService.hasAuthToken() ?
-                <h3 style={{color: "green"}}>You're logged in!</h3> :
-                <h4 style={{color: "red"}}>{errorState}</h4>
-            }
-            <div>
-                {mapFormInputs}
-                {/*////password input was manually added due to but with mapping stripping password "type"*/}
+        <div style={formStyle}>
+            <form onSubmit={handleSubmitJwtAuth}>
+                <header style={headerStyle}>
+                    <h1>Login</h1>
+                </header>
+                {
+                    TokenService.hasAuthToken() ?
+                        <h3 style={{color: "green"}}>You're logged in!</h3> :
+                        <h4 style={{color: "red"}}>{errorState}</h4>
+                }
                 <div>
-                    <label
-                        style={formElementSpacing}>
-                        Password
-                    </label>
-                    <input
-                        ref={register({required: true, minLength: 2})}
-                        name="password"
-                        type="password"/>
-                    <br/>
-                    {errors.inputName && <p style={{color: "red"}}>This is required</p>}
+                    {mapFormInputs}
+                    {/*////password input was manually added due to but with mapping stripping password "type"*/}
+                    <div>
+                        <label
+                            style={formElementSpacing}>
+                            Password
+                        </label>
+                        <input
+                            ref={register({required: true, minLength: 2})}
+                            style={formInputStyle}
+                            name="password"
+                            type="password"/>
+                        <br/>
+                        {errors.inputName && <p style={{color: "red"}}>This is required</p>}
+                    </div>
+                    <button
+                        type="submit"
+                        style={formButtonStyle}>
+                        Login
+                    </button>
                 </div>
-                <button type="submit">Login</button>
-            </div>
-        </form>
+            </form>
+        </div>
     )
 }
 
 const headerStyle = {
-    marginTop: "6rem",
-    marginBottom: "3rem",
+    textAlign: "center",
 }
 
 

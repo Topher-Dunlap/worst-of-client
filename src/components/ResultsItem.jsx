@@ -36,8 +36,7 @@ export default function ResultsItem(props) {
                     review={review}
                 />
             )
-        }
-        else {
+        } else {
             return <p>Reviews Not Available</p>
         }
     }
@@ -55,10 +54,11 @@ export default function ResultsItem(props) {
                     alt="business"
                     src={businessImage ? businessImage : noImg}
                 />
-                {insertReviews()}
+                    <h3 style={removeMargin}>Review</h3>
+                    {insertReviews()}
                 <div>
                     <ul style={innerListStyle}>
-                        <h3>Address</h3>
+                        <h3 style={removeMargin}>Address</h3>
                         <a href={googleMapsURL} style={addressBoxStyle} target="_blank" rel="noopener noreferrer">
                             {addressMap}
                         </a>
@@ -67,6 +67,10 @@ export default function ResultsItem(props) {
             </div>
         </li>
     )
+}
+
+const removeMargin = {
+    margin: "3rem 0 0"
 }
 
 const linkStyle = {

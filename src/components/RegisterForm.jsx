@@ -6,7 +6,9 @@ import ThemeContext from "./ThemeContext";
 export default function RegisterForm() {
 
     const context = useContext(ThemeContext);
-    const headerTheme = context.headerStyle;
+    const formStyle = context.formStyle;
+    const formButtonStyle = context.formButtonStyle;
+    const centerText = context.centerText
 
     const handleRegSubmit = (ev) => {
 
@@ -39,19 +41,26 @@ export default function RegisterForm() {
     )
 
     return (
-        <form onSubmit={handleRegSubmit}>
-            <header style={headerTheme}>
-                <h2>Register</h2>
-            </header>
-            <section style={margin}>
-                <header>
-                    <h3>Start discovering your low standards today</h3>
-                </header>
-            </section>
-            {mapFormInputs}
-            <button type='submit'>Sign Up</button>
-        </form>
-
+        <div style={formStyle}>
+            <form onSubmit={handleRegSubmit}>
+                <div style={centerText}>
+                    <header>
+                        <h2>Register</h2>
+                    </header>
+                    <section style={margin}>
+                        <header>
+                            <h3>Start discovering your low standards today</h3>
+                        </header>
+                    </section>
+                </div>
+                {mapFormInputs}
+                <button
+                    style={formButtonStyle}
+                    type='submit'>
+                    Sign Up
+                </button>
+            </form>
+        </div>
     )
 }
 

@@ -26,7 +26,7 @@ export default function ResultsReview(props) {
 
 const divStyle = {
     display: "inline-block",
-    margin: "3rem 3rem",
+    margin: "0rem 3rem 3rem",
     textAlign: "left",
     borderRadius: "10px 10px 10px 10px / 10px 10px 10px 10px",
     boxShadow: "0 8px 6px -6px black",

@@ -4,8 +4,12 @@ import ThemeContext from "./ThemeContext";
 
 export default function LoginFormInput(props) {
 
+    ///context theme
     const context = useContext(ThemeContext);
     const formElementSpacing = context.formElementSpacing;
+    const formInputStyle = context.formInputStyle;
+
+    ///props
     const fieldLabel = props.fieldLabel;
     const inputName = props.inputName;
     const typeName = props.type;
@@ -19,6 +23,7 @@ export default function LoginFormInput(props) {
             </label>
             <input
                 ref={register({required: true, minLength: 2})}
+                style={formInputStyle}
                 name={inputName}
                 type={typeName}/>
             <br/>
