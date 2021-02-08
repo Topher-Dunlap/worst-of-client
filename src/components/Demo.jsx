@@ -29,7 +29,8 @@ const bottomMargin = {
 }
 
 const paraMargin = {
-    margin: "2rem 2rem"
+    margin: "2rem 2rem",
+    textAlign: "center",
 }
 
 const listStyle = {

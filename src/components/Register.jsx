@@ -1,12 +1,9 @@
-import React, {useContext} from 'react';
+import React from 'react';
 // import ThemeContext from "./ThemeContext";
 import RegisterForm from "./RegisterForm";
 import PasswordReq from "./PasswordReq";
 
-export default function Login() {
-
-    // const context = useContext(ThemeContext);
-    // const theme = context.theme;
+export default function Register() {
 
     return (
         <section>

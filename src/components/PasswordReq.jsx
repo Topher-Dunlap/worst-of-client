@@ -26,6 +26,7 @@ const passwordReq = {
 }
 
 const listStyle = {
+    color: "red",
     listStylePosition: "inside",
     textAlign: "center",
     margin: "0 2rem",

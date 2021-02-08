@@ -11,6 +11,7 @@ import skyline from "../images/skyline.png";
 
 export default function Landing() {
 
+    ///context theme styling
     const context = useContext(ThemeContext);
     const theme = context.theme;
 

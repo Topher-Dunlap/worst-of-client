@@ -45,7 +45,13 @@ export default function Search() {
                 </section>
             </div>
             <div>
-                <Loader type="TailSpin" color="grey" height={80} width={80} visible={loadingSpinner}/>
+                <Loader
+                    style={centerSpinner}
+                    type="TailSpin"
+                    color="grey"
+                    height={80}
+                    width={80}
+                    visible={loadingSpinner}/>
                 <ResultsConditional/>
             </div>
         </section>
@@ -54,4 +60,9 @@ export default function Search() {
 
 const container = {
     padding: "70px 15px",
+    textAlign: "center",
+}
+
+const centerSpinner = {
+    textAlign: "center",
 }

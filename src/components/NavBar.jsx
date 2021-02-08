@@ -81,6 +81,7 @@ export default function NavBar() {
                 trigger={
                     <Burger
                         active={state}
+                        style={burgerStyle}
                         burger="3dy"
                         color="white"
                         hoverOpacity={0.8}
@@ -93,8 +94,7 @@ export default function NavBar() {
                     closeMenu()
                 }
                 } to={false}>
-
-                    <CgClose/>
+                    <CgClose style={closeButtonStyle}/>
                 </Link>
                 <ul style={topNavLeft}>
                     {navRoutes}
@@ -141,7 +141,7 @@ const popUpStyle = {
     background: "rgb(255, 255, 255)",
     height: "37%",
     width: "60%",
-    padding: "5px",
+    padding: "0 0 80px",
     border: "none",
     fontSize: "25px",
     borderRadius: "5px",
@@ -158,4 +158,12 @@ const topNavLeft = {
     textAlign: "center",
     padding: "14px 16px",
     textDecoration: "none",
+}
+
+const closeButtonStyle = {
+    margin: ".5rem",
+}
+
+const burgerStyle = {
+    marginTop: "0",
 }

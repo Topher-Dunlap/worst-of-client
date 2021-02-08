@@ -2,6 +2,7 @@ import React from 'react';
 
 export default function LandingSection(props) {
 
+    ///props
     const pContent = props.pContent;
     const sectionImage = props.sectionImage;
 
@@ -20,5 +21,6 @@ const imgStyle = {
 }
 
 const sectionPara = {
-    margin: "4rem 2rem"
+    margin: "4rem 2rem",
+    textAlign: "center",
 }

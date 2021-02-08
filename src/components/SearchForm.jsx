@@ -1,6 +1,5 @@
 import React, { useState} from 'react';
 import axios from 'axios';
-import {Link} from "react-router-dom";
 import {BsSearch} from 'react-icons/bs';
 import {useForm} from "react-hook-form";
 import SearchFormOptions from "./SearchFormOptions";
@@ -90,13 +89,12 @@ export default function SearchForm(props) {
                         placeholder="Minneapolis"
                         onChange={searchOnChange}
                     />
-                    <Link
+                    <button
                         style={searchButton}
-                        type="submit"
-                        to={false}>
+                        type="submit">
                         <BsSearch/>
-                    </Link>
-                    {errors.searchField && <p>This is required</p>}
+                    </button>
+                    {errors.searchField && <p>Please enter a location.</p>}
                 </div>
                 <br/>
                 {mapFilterOptions}
@@ -111,13 +109,17 @@ const searchFieldStyle = {
 }
 
 const searchButton = {
-    padding: "5px",
+    height: "28px",
+    width: "28px",
+    padding: "7px",
     margin: "40px 10px",
-    color: "black",
-    // borderRadius: "5%"
-    // borderWidth: "thin",
-    // borderStyle: "solid",
-    // borderColor: "black",
+    color: "white",
+    borderRadius: "50%",
+    backgroundColor: "#3A506B",
+    borderStyle: "none",
+    display: "inline-block",
+    textAlign: "center",
+    // boxShadow: "0 8px 6px -6px black",
 }
 
 const searchBar = {

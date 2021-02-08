@@ -13,6 +13,7 @@ export default function LoginForm() {
     const {register, errors} = useForm();
     const [errorState, setErrorState] = useState("")
 
+    ///context theme styling
     const context = useContext(ThemeContext);
     const formStyle = context.formStyle;
     const formElementSpacing = context.formElementSpacing;
