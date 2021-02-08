@@ -119,11 +119,10 @@ const searchButton = {
     borderStyle: "none",
     display: "inline-block",
     textAlign: "center",
-    // boxShadow: "0 8px 6px -6px black",
 }
 
 const searchBar = {
-    margin: "75px 10px 0px",
+    margin: "0 10px",
 }
 
 ///form input values populated by .map function

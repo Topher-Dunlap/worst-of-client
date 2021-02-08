@@ -20,8 +20,16 @@ export default function RatingImageFinder(props) {
     const filteredRatingImage = imageStore.filter(id => id.id === businessRating)
 
     return (
-        <img alt="rating" src={filteredRatingImage[0].src}/>
+        <img
+            style={ratingSize}
+            alt="rating"
+            src={filteredRatingImage[0].src}/>
     )
+}
+
+const ratingSize = {
+    width: "10rem",
+    margin: "1rem 0 1rem",
 }
 
 //store image paths to correlating ID

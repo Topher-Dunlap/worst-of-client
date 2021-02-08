@@ -91,9 +91,8 @@ export default function NavBar() {
             >
                 <Link onClick={() => {
                     setState(false)
-                    closeMenu()
-                }
-                } to={false}>
+                    closeMenu()}} to={false}
+                >
                     <CgClose style={closeButtonStyle}/>
                 </Link>
                 <ul style={topNavLeft}>
@@ -141,7 +140,7 @@ const popUpStyle = {
     background: "rgb(255, 255, 255)",
     height: "37%",
     width: "60%",
-    padding: "0 0 80px",
+    padding: "0",
     border: "none",
     fontSize: "25px",
     borderRadius: "5px",
@@ -156,8 +155,10 @@ const topNavLeft = {
     margin: "0",
     listStyleType: "none",
     textAlign: "center",
-    padding: "14px 16px",
+    padding: "14px 16px 60px",
     textDecoration: "none",
+    backgroundColor: "white",
+    borderRadius: "5px",
 }
 
 const closeButtonStyle = {

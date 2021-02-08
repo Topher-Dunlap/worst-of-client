@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
 import ErrorBoundary from '../components/ErrorBoundary';
 import NavBar from '../components/NavBar';
+import Footer from '../components/Footer'
 import SwitchNavRoutes from '../components/SwitchNavRoutes';
-import ThemeContext from "../components/ThemeContext";
-import AuthContext from "../components/AuthContext";
+import ThemeContext from '../components/ThemeContext';
+import AuthContext from '../components/AuthContext';
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
                             <SwitchNavRoutes/>
                         </ErrorBoundary>
                     </div>
+                    <Footer />
                 </main>
             </AuthContext.Provider>
         </ThemeContext.Provider>
@@ -31,7 +33,6 @@ const contextValue = {
         // fontFamily: "Open Sans, sans-serif",
         fontSize: "20px",
         color: "#444",
-        // textAlign: "center",
         lineHeight: "1.5",
         margin: "0",
     },

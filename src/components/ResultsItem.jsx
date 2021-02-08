@@ -17,13 +17,10 @@ export default function ResultsItem(props) {
     const reviewUrl = props.reviewUrl
     const reviewerImg = props.reviewerImg
     const googleMapsURL = `https://maps.google.com/?q=${locationLat},${locationLong}`
+    // let addressString = ''
 
-    ///create list display for business address
-    const addressMap = location.display_address.map((line, idx) =>
-        <li key={idx}>
-            {line}
-        </li>
-    )
+    // ///create list display for business address
+    const addressString = location.display_address.join(' ')
 
     ///conditional render for review
     const insertReviews = () => {
@@ -44,80 +41,88 @@ export default function ResultsItem(props) {
     return (
         <li style={resultsStyle}>
             <div style={resultsDivStyle}>
-                <a href={yelpLink} style={linkStyle} target="_blank" rel="noopener noreferrer">
-                    <h2>{businessName}</h2>
-                </a>
-                <RatingImages businessRating={businessRating}/>
-                <br/>
                 <img
                     style={imageStyle}
                     alt="business"
                     src={businessImage ? businessImage : noImg}
                 />
-                    <h3 style={removeMargin}>Review</h3>
+                <a
+                    href={yelpLink}
+                    style={linkStyle}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <h2 style={headerStyle}>{businessName}</h2>
+                </a>
+                <RatingImages businessRating={businessRating}/>
+                <br/>
+                    <h3 style={removeReviewMargin}>Customer Review</h3>
                     {insertReviews()}
-                <div>
-                    <ul style={innerListStyle}>
-                        <h3 style={removeMargin}>Address</h3>
-                        <a href={googleMapsURL} style={addressBoxStyle} target="_blank" rel="noopener noreferrer">
-                            {addressMap}
+                    <div style={divAddressStyle}>
+                        <h3 style={addressMargin}>Address</h3>
+                        <a
+                            href={googleMapsURL}
+                            style={addressBoxStyle}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            {addressString}
                         </a>
-                    </ul>
+                    </div>
                 </div>
-            </div>
         </li>
     )
 }
 
-const removeMargin = {
+const addressMargin = {
     margin: "3rem 0 0"
+}
+
+const removeReviewMargin = {
+    margin: "3rem 2rem 0"
+}
+
+const headerStyle = {
+    margin: "2rem 2rem 0",
+    fontSize: "2.5rem",
 }
 
 const linkStyle = {
     color: "#5BC0BE",
-    margin: "0rem 1rem",
+    padding: "0 2rem",
 }
 
 const imageStyle = {
-    width: "250px",
-    height: "250px",
-    margin: "2rem 0 0",
-    borderStyle: "solid",
-    borderWidth: "thin",
+    width: "100%",
+    height: "100%",
+    borderRadius: "5px 5px 0px 0px",
 }
 
-const innerListStyle = {
-    listStyleType: "none",
-    textAlign: "center",
+const divAddressStyle = {
+    textAlign: "left",
     padding: "0",
-    margin: "0",
+    margin: "0 2rem",
     height: "75%",
 }
 
 const addressBoxStyle = {
-    textAlign: "center",
-    display: "inline-block",
-    margin: "0 3rem",
-    borderRadius: "10px 10px 10px 10px / 10px 10px 10px 10px",
-    boxShadow: "0 8px 6px -6px black",
-    padding: "20px",
-    backgroundColor: "#E5E5E5",
     color: "#5BC0BE",
 }
 
 const resultsStyle = {
     listStyleType: "none",
-    textAlign: "center",
+    textAlign: "left",
     padding: "2rem",
-    margin: "1rem .5rem",
-    height: "75%",
+    margin: "auto",
+    height: "20%",
+    width: "75%",
     borderRadius: "5px",
 }
 
 const resultsDivStyle = {
     borderRadius: "5px",
     backgroundColor: "#FFFFFF",
-    padding: "3rem 0",
+    padding: "0 0 3rem",
     boxShadow:
         `0 2.8px 1.2px rgba(0, 0, 0, 0.034),
         0 6.7px 2.3px rgba(0, 0, 0, 0.048),

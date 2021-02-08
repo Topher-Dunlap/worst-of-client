@@ -16,22 +16,22 @@ export default function ResultsReview(props) {
                 />
                 <p style={reviewTextStyle}>
                     "{review}"
-                    <a href={reviewUrl} style={linkStyle} target="_blank" rel="noopener noreferrer">
-                        click for complete review.
-                    </a>
+                        <a href={reviewUrl} style={linkColorStyle} target="_blank" rel="noopener noreferrer">
+                            click for complete review.
+                        </a>
                 </p>
             </div>
     )
 }
 
 const divStyle = {
+    margin: "0 2rem 0 2rem",
     display: "inline-block",
-    margin: "0rem 3rem 3rem",
-    textAlign: "left",
     borderRadius: "10px 10px 10px 10px / 10px 10px 10px 10px",
-    boxShadow: "0 8px 6px -6px black",
+    borderWidth: "thin",
+    borderStyle: "solid",
+    borderColor: "#E5E5E5",
     padding: "20px",
-    backgroundColor: "#E5E5E5",
 }
 
 const reviewImgStyle = {
@@ -43,10 +43,11 @@ const reviewImgStyle = {
 }
 
 const reviewTextStyle = {
-    margin: "0"
+    margin: "0",
+    textAlign: "left",
 }
 
-const linkStyle = {
+const linkColorStyle = {
+    color: "#5BC0BE",
     margin: "0 .5rem",
-    color: "#5BC0BE"
 }
