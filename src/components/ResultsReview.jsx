@@ -31,8 +31,7 @@ const divStyle = {
     borderRadius: "10px 10px 10px 10px / 10px 10px 10px 10px",
     boxShadow: "0 8px 6px -6px black",
     padding: "20px",
-    backgroundColor: "#5BC0BE",
-    color: "white",
+    backgroundColor: "#E5E5E5",
 }
 
 const reviewImgStyle = {
@@ -48,5 +47,6 @@ const reviewTextStyle = {
 }
 
 const linkStyle = {
-    margin: "0 .5rem"
+    margin: "0 .5rem",
+    color: "#5BC0BE"
 }

@@ -5,17 +5,21 @@
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.34",
     "@fortawesome/free-solid-svg-icons": "^5.15.2",
+    "@material-ui/core": "^4.11.3",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.3",
     "@testing-library/user-event": "^12.6.2",
     "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
     "react": "^17.0.1",
+    "react-css-burger": "^0.2.0",
     "react-dom": "^17.0.1",
     "react-hook-form": "^6.14.2",
+    "react-icons": "^4.2.0",
     "react-loader-spinner": "^3.1.14",
     "react-scripts": "4.0.1",
     "react-spinners": "^0.10.4",
+    "reactjs-popup": "^2.0.4",
     "web-vitals": "^0.2.4"
   },
   "scripts": {

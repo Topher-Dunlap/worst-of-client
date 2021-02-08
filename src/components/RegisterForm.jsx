@@ -1,8 +1,12 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import AuthApiService from '../service/auth-api-service'
 import RegisterFormInput from "./RegisterFormInput";
+import ThemeContext from "./ThemeContext";
 
 export default function RegisterForm() {
+
+    const context = useContext(ThemeContext);
+    const headerTheme = context.headerStyle;
 
     const handleRegSubmit = (ev) => {
 
@@ -19,7 +23,6 @@ export default function RegisterForm() {
                 last_name.value = ''
                 email.value = ''
                 password.value = ''
-                // this.props.onRegistrationSuccess()
             })
             .catch(error => {
                 console.error({error})
@@ -37,14 +40,23 @@ export default function RegisterForm() {
 
     return (
         <form onSubmit={handleRegSubmit}>
-            <header style={headerStyle}>
-                <h1>Register</h1>
+            <header style={headerTheme}>
+                <h2>Register</h2>
             </header>
+            <section style={margin}>
+                <header>
+                    <h3>Start discovering your low standards today</h3>
+                </header>
+            </section>
             {mapFormInputs}
             <button type='submit'>Sign Up</button>
         </form>
 
     )
+}
+
+const margin = {
+    margin: "0rem 2rem"
 }
 
 const formOptions = [
@@ -69,8 +81,3 @@ const formOptions = [
         type: "password",
     },
 ]
-
-const headerStyle = {
-    marginTop: "6rem",
-    marginBottom: "3rem",
-}

@@ -1,8 +1,9 @@
-import React, {useContext, useState} from 'react';
+import React, { useState} from 'react';
 import axios from 'axios';
+import {Link} from "react-router-dom";
+import {BsSearch} from 'react-icons/bs';
 import {useForm} from "react-hook-form";
 import SearchFormOptions from "./SearchFormOptions";
-import ThemeContext from "./ThemeContext";
 import config from "../config";
 import TokenService from "../service/token-service";
 
@@ -10,10 +11,6 @@ export default function SearchForm(props) {
 
     ///react-form-hook import variables
     const {register, handleSubmit, errors} = useForm();
-
-    ///theme context variables
-    const context = useContext(ThemeContext);
-    const formElementSpacing = context.formElementSpacing;
 
     ///useState for search form values
     const [apiValues, setSearchValues] = useState({
@@ -88,11 +85,17 @@ export default function SearchForm(props) {
                 <div style={searchBar}>
                     <input
                         ref={register({required: true, minLength: 2})}
+                        style={searchFieldStyle}
                         name="searchField"
                         placeholder="Minneapolis"
                         onChange={searchOnChange}
                     />
-                    <button style={formElementSpacing} type="submit">Search</button>
+                    <Link
+                        style={searchButton}
+                        type="submit"
+                        to={false}>
+                        <BsSearch/>
+                    </Link>
                     {errors.searchField && <p>This is required</p>}
                 </div>
                 <br/>
@@ -100,6 +103,21 @@ export default function SearchForm(props) {
             </form>
         </div>
     )
+}
+
+const searchFieldStyle = {
+    height: "25px",
+    width: "300px",
+}
+
+const searchButton = {
+    padding: "5px",
+    margin: "40px 10px",
+    color: "black",
+    // borderRadius: "5%"
+    // borderWidth: "thin",
+    // borderStyle: "solid",
+    // borderColor: "black",
 }
 
 const searchBar = {

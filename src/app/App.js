@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import ErrorBoundary from '../components/ErrorBoundary';
-import NavList from '../components/NavList';
+import NavBar from '../components/NavBar';
 import SwitchNavRoutes from '../components/SwitchNavRoutes';
 import ThemeContext from "../components/ThemeContext";
 import AuthContext from "../components/AuthContext";
@@ -14,7 +14,7 @@ function App() {
         <ThemeContext.Provider value={contextValue}>
             <AuthContext.Provider value={contextAuth}>
                 <main>
-                    <NavList/>
+                    <NavBar/>
                     <div>
                         <ErrorBoundary>
                             <SwitchNavRoutes/>
@@ -33,19 +33,22 @@ const contextValue = {
         color: "#444",
         textAlign: "center",
         lineHeight: "1.5",
-        margin: "1rem",
+        margin: "0",
     },
     formElementSpacing: {
         margin: "0px 10px",
     },
     sectionTopBottomMargin: {
-        margin: "8rem 2rem"
+        margin: "8rem 0"
     },
-    backgroundColors: [
-        {backgroundColor: "#AAAAAA"},
-        {backgroundColor: "#BBBBBB"},
-        {backgroundColor: "#EEEEEE"},
-    ],
+    headerStyle: {
+        backgroundColor: "#0B132B",
+        color: "white",
+        margin: "0 0 6rem",
+    },
+    fontColor: {
+        color: "#0B132B",
+    }
 }
 
 export default App;
