@@ -1,70 +1,67 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+https://worst-of-client-4s5nnyjyl.vercel.app/
 
-## Available Scripts
 
-In the project directory, you can run:
+# Worst-Of
 
-### `npm start`
+This app allows the user to search for the worst Restaurants, bars or coffee establishments in a given area.
+The users default location will be determined via their IP address.
+Their city will be automatically populated into the search bar for ease fo use.
+The worst rated businesses will be returned, parsed and displayed from the Yelp Fusion API. 
+If a given area does not have enough results to return the number will be adjusted automatically and re-requested for the max number of results possible.
+Results display the default picture of the business, URL to the businesses Yelp page, overall rating, a user review, link to user review, user photo and address which will route you to google maps if clicked on.  Users will need to create an account in order to use the app features. 
+However, there is a demo account available for users to test the functionality of the app. It is listed on the landing page for ease of use.
+## Motivation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+My motivation for this app was to create something that utilized client and server side technologies in an interesting way. It's common to see "best of" lists but never dynamic "Worst Of" list. In the age of experiences this type of app is exactly what Millennial's ordered.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Screenshots
+Landing Page:
 
-### `npm test`
+![landing page](screenshots/landing.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Search:
 
-### `npm run build`
+![search](screenshots/search.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Results:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![results](screenshots/results.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![results2](screenshots/results2.png)
 
-### `npm run eject`
+## How to Use
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+1. Register an account or login using your own credentials or that of the Demo account.
+2. Enter the city or area you'd like to see the Worst-Of results in.
+3. Scroll through the results and interact with the different business or reviews. Conduct more searches to find more mediocrity!
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Built With
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Front-End
+* React
+* JSX
+* JavaScript
+* jQuery
+* Jest
+* Axios
+* Service Objects
+* Routing
+* Error Boundaries
+* JWT
+* Hooks
+* CSS
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Features
 
-## Learn More
+* Secure login and registration technology.
+* Searches for the worst rates businesses in an area.
+* Displays a review and photo for better insight into the business
+* Dynamically displayed results
+* interactive results with clickable links to extended reviews, yelp business page and google maps. 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Authors
 
-### Code Splitting
+* **Topher Dunlap** - ** - Design, Front-End development/testing, styling, deployment and iteration.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

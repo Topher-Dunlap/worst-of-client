@@ -7,6 +7,7 @@ import {Link} from "react-router-dom";
 import 'reactjs-popup/dist/index.css';
 import Popup from 'reactjs-popup';
 import Burger from 'react-css-burger';
+import { IconButton } from '@material-ui/core';
 import {CgClose} from 'react-icons/cg';
 import ThemeContext from "./ThemeContext";
 
@@ -89,12 +90,12 @@ export default function NavBar() {
                     />
                 }
             >
-                <Link onClick={() => {
+                <IconButton onClick={() => {
                     setState(false)
-                    closeMenu()}} to={false}
+                    closeMenu()}}
                 >
                     <CgClose style={closeButtonStyle}/>
-                </Link>
+                </IconButton>
                 <ul style={topNavLeft}>
                     {navRoutes}
                     {loggedIn ? RenderLogoutLink() : loginLinks}
