@@ -18,17 +18,17 @@ My motivation for this app was to create something that utilized client and serv
 ## Screenshots
 Landing Page:
 
-![landing page](screenshots/landing.png)
+![landing page](./src/images/wo-landing.png)
 
 Search:
 
-![search](screenshots/search.png)
+![search](./src/images/wo-search.png)
 
 Results:
 
-![results](screenshots/results.png)
+![results](./src/images/wo-results.png)
 
-![results2](screenshots/results2.png)
+![results2](./src/images/wo-results2.png)
 
 ## How to Use
 
