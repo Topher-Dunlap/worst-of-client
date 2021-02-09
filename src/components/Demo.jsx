@@ -3,7 +3,7 @@ import React from 'react';
 export default function Demo() {
 
     return (
-        <section style={bottomMargin}>
+        <section style={demoMargin}>
             <header>
                 <h2 style={headerTheme}>How to Demo</h2>
             </header>
@@ -20,9 +20,8 @@ export default function Demo() {
     )
 }
 
-const bottomMargin = {
+const demoMargin = {
     margin: "4rem 2rem 6rem 2rem",
-    display: "inline-block",
     borderRadius: "10px 10px 10px 10px / 10px 10px 10px 10px",
     borderStyle: "solid",
     borderColor: "#0B132B",
