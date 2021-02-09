@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import {BsSearch} from 'react-icons/bs';
 import {useForm} from "react-hook-form";
@@ -21,6 +21,20 @@ export default function SearchForm(props) {
     const termQuery = encodeURIComponent(apiValues.term);
     const locationQuery = encodeURIComponent(apiValues.location);
     const offsetQuery = encodeURIComponent(apiValues.offsetLimit);
+
+    //update the location key in useState for search form values
+    const searchOnChange = (data) => {
+        setSearchValues({...apiValues, location: data.target.value})
+    }
+
+    ///useEffect/state for user location
+    useEffect(() => {
+            axios.get(`https://ipapi.co/city/`)
+                .then((response) => {
+                    setSearchValues({...apiValues, location: response.data})
+                })
+        }, []
+    );
 
     ///onSubmit sending search for values via query string to back-end
     const onSubmit = () => {
@@ -73,11 +87,6 @@ export default function SearchForm(props) {
         />
     )
 
-    //update the location key in useState for search form values
-    const searchOnChange = (data) => {
-        setSearchValues({...apiValues, location: data.target.value})
-    }
-
     return (
         <div>
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -86,7 +95,7 @@ export default function SearchForm(props) {
                         ref={register({required: true, minLength: 2})}
                         style={searchFieldStyle}
                         name="searchField"
-                        placeholder="Minneapolis"
+                        value={apiValues.location}
                         onChange={searchOnChange}
                     />
                     <button
@@ -94,7 +103,7 @@ export default function SearchForm(props) {
                         type="submit">
                         <BsSearch/>
                     </button>
-                    {errors.searchField && <p>Please enter a location.</p>}
+                    {errors.searchField && <p style={{color: "red"}}>Please enter a location.</p>}
                 </div>
                 <br/>
                 {mapFilterOptions}

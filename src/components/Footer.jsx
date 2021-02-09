@@ -20,8 +20,11 @@ const footerStyle = {
     backgroundColor: "#3A506B",
     clear: "both",
     color: "white",
-    position: "relative",
     height: "30px",
     marginTop: "25%",
+    position: "fixed",
+    bottom: "0",
+    left: "0",
+    right: "0",
 }
 

@@ -17,7 +17,6 @@ export default function ResultsItem(props) {
     const reviewUrl = props.reviewUrl
     const reviewerImg = props.reviewerImg
     const googleMapsURL = `https://maps.google.com/?q=${locationLat},${locationLong}`
-    // let addressString = ''
 
     // ///create list display for business address
     const addressString = location.display_address.join(' ')
@@ -34,7 +33,7 @@ export default function ResultsItem(props) {
                 />
             )
         } else {
-            return <p>Reviews Not Available</p>
+            return <p style={noReviewDivStyle}>Reviews Not Available</p>
         }
     }
 
@@ -56,10 +55,10 @@ export default function ResultsItem(props) {
                 </a>
                 <RatingImages businessRating={businessRating}/>
                 <br/>
-                    <h3 style={removeReviewMargin}>Customer Review</h3>
-                    {insertReviews()}
+                        <h3 style={reviewHeaderMargin}>Customer Review</h3>
+                        {insertReviews()}
                     <div style={divAddressStyle}>
-                        <h3 style={addressMargin}>Address</h3>
+                        <h3 style={addressMargin}>Address:</h3>
                         <a
                             href={googleMapsURL}
                             style={addressBoxStyle}
@@ -75,11 +74,11 @@ export default function ResultsItem(props) {
 }
 
 const addressMargin = {
-    margin: "3rem 0 0"
+    margin: "0 .5rem 0"
 }
 
-const removeReviewMargin = {
-    margin: "3rem 2rem 0"
+const reviewHeaderMargin = {
+    margin: "3rem 2rem .5rem"
 }
 
 const headerStyle = {
@@ -99,14 +98,25 @@ const imageStyle = {
 }
 
 const divAddressStyle = {
+    display: "flex",
     textAlign: "left",
     padding: "0",
-    margin: "0 2rem",
+    margin: "3rem 2rem 0",
     height: "75%",
 }
 
 const addressBoxStyle = {
     color: "#5BC0BE",
+}
+
+const noReviewDivStyle = {
+    margin: "0 2rem 0 2rem",
+    display: "inline-block",
+    borderRadius: "10px 10px 10px 10px / 10px 10px 10px 10px",
+    borderWidth: "thin",
+    borderStyle: "solid",
+    borderColor: "#E5E5E5",
+    padding: "20px",
 }
 
 const resultsStyle = {

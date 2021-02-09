@@ -17,7 +17,6 @@ export default function LoginForm() {
     const context = useContext(ThemeContext);
     const formStyle = context.formStyle;
     const formElementSpacing = context.formElementSpacing;
-    const centerText = context.centerText;
     const formButtonStyle = context.formButtonStyle;
     const formInputStyle = context.formInputStyle;
 

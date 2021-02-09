@@ -1,5 +1,4 @@
 import React from 'react';
-// import ThemeContext from "./ThemeContext";
 import RegisterForm from "./RegisterForm";
 import PasswordReq from "./PasswordReq";
 

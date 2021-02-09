@@ -1,10 +1,6 @@
-import React, {useContext} from 'react';
-import ThemeContext from "./ThemeContext";
+import React from 'react';
 
 export default function Demo() {
-
-    const context = useContext(ThemeContext);
-    const headerTheme = context.headerStyle;
 
     return (
         <section style={bottomMargin}>
@@ -14,10 +10,10 @@ export default function Demo() {
             <p style={paraMargin}>If you'd like to demo this app without registration please enter the following credentials:</p>
             <ul style={listStyle}>
                 <li>
-                    Email: test@gmail.com
+                    Email: tester@gmail.com
                 </li>
                 <li>
-                    Password: P@sswordsAreCool1!
+                    Password: P@ssword1!
                 </li>
             </ul>
         </section>
@@ -25,12 +21,24 @@ export default function Demo() {
 }
 
 const bottomMargin = {
-    marginBottom: "6rem",
+    margin: "4rem 2rem 6rem 2rem",
+    display: "inline-block",
+    borderRadius: "10px 10px 10px 10px / 10px 10px 10px 10px",
+    borderStyle: "solid",
+    borderColor: "#0B132B",
+    padding: "20px",
 }
 
 const paraMargin = {
-    margin: "2rem 2rem",
+    margin: "0 2rem 2rem",
     textAlign: "center",
+}
+
+const headerTheme = {
+    textAlign: "center",
+    backgroundColor: "#0B132B",
+    color: "white",
+    margin: "0 0 2rem",
 }
 
 const listStyle = {
