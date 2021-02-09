@@ -4,143 +4,200 @@ exports[`Landing component renders the UI as expected 1`] = `
 Array [
   <section>
     <div>
-      <span>
-        <h1
+      <div>
+        <img
+          alt="city"
+          src="skyline.png"
           style={
             Object {
-              "marginTop": "8rem",
+              "height": "100%",
+              "margin": "0",
+              "width": "100%",
             }
           }
-        >
-          Worst Of
-        </h1>
-        <h2>
-          Find adventure in any City.
-        </h2>
-      </span>
+        />
+      </div>
       <section>
-        <header
+        <p
           style={
             Object {
-              "backgroundColor": "#BBBBBB",
+              "margin": "4rem 2rem",
+              "textAlign": "center",
             }
           }
         >
-          <h3>
-            Experience the lowest rated places a city has to offer.
-          </h3>
-        </header>
-        <p>
-          [
-          <em>
-            placeholder for screenshot of a dive bar
-          </em>
-          ]
-        </p>
-        <p>
           Worst Of helps you discover the lowest rated, restaurants, bars and coffee shops in your area.
                         Have you and your friends found yourselves with nothing to do on a friday night? Now's your
                         chance at rolling the fun dice on finding a new local favorite that you may love to hate!
         </p>
-      </section>
-      <section>
-        <header
+        <img
+          alt="bar"
+          src="diveBar.png"
           style={
             Object {
-              "backgroundColor": "#BBBBBB",
+              "height": "100%",
+              "margin": "0",
+              "width": "100%",
+            }
+          }
+        />
+      </section>
+      <section>
+        <p
+          style={
+            Object {
+              "margin": "4rem 2rem",
+              "textAlign": "center",
             }
           }
         >
-          <h3>
-            Find something to brag about.
-          </h3>
-        </header>
-        <p>
-          [
-          <em>
-            placeholder for screenshot of terrible restaurant
-          </em>
-          ]
-        </p>
-        <p>
           Have your ever struggled to come up with interesting conversation with strangers and acquaintances
                         you meet? How about something to talk about with your co-workers on monday? Worst Of is here to
                         provide you with an unforgettable, mediocre to bad experience you'll love telling everyone
                         about.
         </p>
-      </section>
-      <section>
-        <header>
-          <h3>
-            Start discovering your low standards today
-          </h3>
-        </header>
-      </section>
-      <form
-        onSubmit={[Function]}
-      >
-        <header
+        <img
+          alt="bar"
+          src="badRest.png"
           style={
             Object {
-              "marginBottom": "3rem",
-              "marginTop": "6rem",
+              "height": "100%",
+              "margin": "0",
+              "width": "100%",
+            }
+          }
+        />
+      </section>
+      <section
+        style={
+          Object {
+            "borderColor": "#0B132B",
+            "borderRadius": "10px 10px 10px 10px / 10px 10px 10px 10px",
+            "borderStyle": "solid",
+            "display": "inline-block",
+            "margin": "4rem 2rem 6rem 2rem",
+            "padding": "20px",
+          }
+        }
+      >
+        <header>
+          <h2
+            style={
+              Object {
+                "backgroundColor": "#0B132B",
+                "color": "white",
+                "margin": "0 0 2rem",
+                "textAlign": "center",
+              }
+            }
+          >
+            How to Demo
+          </h2>
+        </header>
+        <p
+          style={
+            Object {
+              "margin": "0 2rem 2rem",
+              "textAlign": "center",
             }
           }
         >
-          <h1>
-            Register
-          </h1>
-        </header>
-        <div>
-          <label
-            htmlFor="first_name"
-          >
-            First name
-          </label>
-          <input
-            id="first_name"
-            name="first_name"
-          />
-        </div>
-        <div>
-          <label
-            htmlFor="last_name"
-          >
-            Last name
-          </label>
-          <input
-            id="last_name"
-            name="last_name"
-          />
-        </div>
-        <div>
-          <label
-            htmlFor="email"
-          >
-            Email
-          </label>
-          <input
-            id="email"
-            name="email"
-          />
-        </div>
-        <div>
-          <label
-            htmlFor="password"
-          >
-            Password
-          </label>
-          <input
-            id="password"
-            name="password"
-          />
-        </div>
-        <button
-          type="submit"
+          If you'd like to demo this app without registration please enter the following credentials:
+        </p>
+        <ul
+          style={
+            Object {
+              "fontWeight": "bold",
+              "listStyleType": "none",
+              "margin": "0 1rem",
+              "padding": "0",
+              "textAlign": "center",
+            }
+          }
         >
-          Sign Up
-        </button>
-      </form>
+          <li>
+            Email: tester@gmail.com
+          </li>
+          <li>
+            Password: P@ssword1!
+          </li>
+        </ul>
+      </section>
+      <div>
+        <form
+          onSubmit={[Function]}
+        >
+          <div>
+            <header>
+              <h2>
+                Register
+              </h2>
+            </header>
+            <section
+              style={
+                Object {
+                  "margin": "0rem 2rem",
+                }
+              }
+            >
+              <header>
+                <h3>
+                  Start discovering your low standards today
+                </h3>
+              </header>
+            </section>
+          </div>
+          <div>
+            <label
+              htmlFor="first_name"
+            >
+              First name
+            </label>
+            <input
+              id="first_name"
+              name="first_name"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="last_name"
+            >
+              Last name
+            </label>
+            <input
+              id="last_name"
+              name="last_name"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="email"
+            >
+              Email
+            </label>
+            <input
+              id="email"
+              name="email"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="password"
+            >
+              Password
+            </label>
+            <input
+              id="password"
+              name="password"
+            />
+          </div>
+          <button
+            type="submit"
+          >
+            Sign Up
+          </button>
+        </form>
+      </div>
       <div
         style={
           Object {
@@ -157,7 +214,13 @@ Array [
         <ul
           style={
             Object {
+              "backgroundColor": "#f2f2f2",
+              "borderColor": "black",
+              "borderRadius": "5px",
+              "color": "red",
               "listStylePosition": "inside",
+              "margin": "0 2rem",
+              "padding": "2rem",
               "textAlign": "center",
             }
           }

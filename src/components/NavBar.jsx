@@ -23,7 +23,7 @@ export default function NavBar() {
     ///for login state
     const {loggedIn, setLoggedIn} = useContext(AuthContext);
     ///for burger menu state
-    const [state, setState] = useState(false);
+    const [isBurgerSelected, setBurgerSelected] = useState(false);
 
     const HandleLogoutClick = () => {
         TokenService.clearAuthToken()
@@ -77,11 +77,11 @@ export default function NavBar() {
                 ref={ref}
                 contentStyle={popUpStyle}
                 closeOnDocumentClick
-                onOpen={() => setState(true)}
-                onClose={() => setState(false)}
+                onOpen={() => setBurgerSelected(true)}
+                onClose={() => setBurgerSelected(false)}
                 trigger={
                     <Burger
-                        active={state}
+                        active={isBurgerSelected}
                         style={burgerStyle}
                         burger="3dy"
                         color="white"
@@ -91,7 +91,7 @@ export default function NavBar() {
                 }
             >
                 <IconButton onClick={() => {
-                    setState(false)
+                    setBurgerSelected(false)
                     closeMenu()}}
                 >
                     <CgClose style={closeButtonStyle}/>
