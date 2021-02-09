@@ -28,7 +28,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test -u",
     "eject": "react-scripts eject",
-    "predeploy": "npm run build",
+    "predeploy": "CI= npm run build",
     "deploy": "vercel --prod"
   },
   "eslintConfig": {
