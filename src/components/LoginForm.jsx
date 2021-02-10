@@ -1,9 +1,10 @@
 import React, {useContext, useState} from 'react';
+import {useForm} from "react-hook-form";
+import { useHistory } from "react-router-dom";
 import LoginFormInput from "./RegisterFormInput";
 import AuthContext from '../components/AuthContext';
 import AuthApiService from '../service/auth-api-service'
 import TokenService from "../service/token-service";
-import {useForm} from "react-hook-form";
 import ThemeContext from "./ThemeContext";
 
 
@@ -11,6 +12,7 @@ export default function LoginForm() {
 
     const {setLoggedIn} = useContext(AuthContext);
     const {register, errors} = useForm();
+    const history = useHistory();
     const [errorState, setErrorState] = useState("")
 
     ///context theme styling
@@ -33,7 +35,7 @@ export default function LoginForm() {
                 password.value = ''
                 TokenService.saveAuthToken(res.authToken)
                 setLoggedIn(TokenService.hasAuthToken())
-                // this.props.onLoginSuccess()
+                history.push("/search");
             })
             .catch(error => {
                 console.error({error})

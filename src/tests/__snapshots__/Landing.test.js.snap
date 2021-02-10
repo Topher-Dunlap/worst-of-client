@@ -74,7 +74,6 @@ Array [
             "borderColor": "#0B132B",
             "borderRadius": "10px 10px 10px 10px / 10px 10px 10px 10px",
             "borderStyle": "solid",
-            "display": "inline-block",
             "margin": "4rem 2rem 6rem 2rem",
             "padding": "20px",
           }

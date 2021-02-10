@@ -7,7 +7,7 @@ describe(`Results component`, () => {
 
     let apiResults = [{
         businessName: "name",
-        businessRating: "rating",
+        rating: 2,
         businessImage: "image_url",
         yelpLink: "url",
         coordinates: {

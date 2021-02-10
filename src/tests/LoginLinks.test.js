@@ -9,9 +9,11 @@ describe(`LoginLinks component`, () => {
     it('renders without crashing', () => {
         const div = document.createElement('div');
 
+        let routePath = "/"
+
         ReactDOM.render(
             <BrowserRouter>
-                <LoginLinks/>
+                <LoginLinks routePath={routePath}/>
             </BrowserRouter>,
             div
         );

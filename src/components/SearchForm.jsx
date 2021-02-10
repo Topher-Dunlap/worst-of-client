@@ -33,7 +33,7 @@ export default function SearchForm(props) {
                 .then((response) => {
                     setSearchValues({...apiValues, location: response.data})
                 })
-        }, []
+        }, [apiValues]
     );
 
     ///onSubmit sending search for values via query string to back-end

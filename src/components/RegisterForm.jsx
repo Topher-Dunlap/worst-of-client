@@ -12,6 +12,7 @@ export default function RegisterForm() {
 
     const handleRegSubmit = (ev) => {
 
+        ev.preventDefault()
         const {first_name, last_name, email, password} = ev.target
 
         AuthApiService.postUser({
