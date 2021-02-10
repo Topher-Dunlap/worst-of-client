@@ -23,7 +23,6 @@ export default function ResultsItem(props) {
 
     ///conditional render for review
     const insertReviews = () => {
-        console.log("review URL: ", reviewUrl)
         if (review) {
             return (
                 <ResultsReview

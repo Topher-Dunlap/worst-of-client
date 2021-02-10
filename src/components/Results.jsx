@@ -19,7 +19,6 @@ export default function Results(props) {
             reviewerImg={business.reviewerImg}
         />
     )
-    console.log("business review URL: ", apiResults[0])
 
     return (
         <section style={resultsColor}>
