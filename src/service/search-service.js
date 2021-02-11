@@ -23,14 +23,14 @@ export const axiosCall = (props, termQuery, locationQuery, offsetQuery) => {
                         dataCleaning(props, response)
                     })
                     .catch(error => {
-                        console.error("This is the search-service error catch: ", error)
+                        console.error(error)
                     })
             } else {
                 dataCleaning(props, response)
             }
         })
         .catch(error => {
-            console.error("This is the search-service error catch: ", error)
+            console.error(error)
         })
 }
 
