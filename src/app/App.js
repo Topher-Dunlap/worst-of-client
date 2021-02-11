@@ -30,7 +30,6 @@ function App() {
 
 const contextValue = {
     theme: {
-        // fontFamily: "Open Sans, sans-serif",
         fontSize: "20px",
         color: "#444",
         lineHeight: "1.5",

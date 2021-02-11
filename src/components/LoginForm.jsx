@@ -60,7 +60,7 @@ export default function LoginForm() {
                 {
                     TokenService.hasAuthToken() ?
                         <h3 style={{color: "green"}}>You're logged in!</h3> :
-                        <h4 style={{color: "red"}}>{errorState}</h4>
+                        <h4 style={errorMessageStyling}>{errorState}</h4>
                 }
                 <div>
                     {mapFormInputs}
@@ -76,7 +76,7 @@ export default function LoginForm() {
                             name="password"
                             type="password"/>
                         <br/>
-                        {errors.inputName && <p style={{color: "red"}}>This is required</p>}
+                        {errors.inputName && <p style={errorMessageStyling}>This is required</p>}
                     </div>
                     <button
                         type="submit"
@@ -93,6 +93,10 @@ const headerStyle = {
     textAlign: "center",
 }
 
+const errorMessageStyling = {
+    color: "red",
+    textAlign: "center",
+}
 
 const formOptions = [
     {
