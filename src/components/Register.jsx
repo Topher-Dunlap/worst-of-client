@@ -12,7 +12,7 @@ export default function Register() {
         if(didRegister !== true) {
             return(
                 <div>
-                    <RegisterForm/>
+                    <RegisterForm setDidRegister={setDidRegister}/>
                     <PasswordReq />
                 </div>
             )

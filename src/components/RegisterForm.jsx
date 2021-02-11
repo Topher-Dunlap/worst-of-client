@@ -1,9 +1,8 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext, useState} from 'react';
 import AuthApiService from '../service/auth-api-service'
 import RegisterFormInput from "./RegisterFormInput";
 import ThemeContext from "./ThemeContext";
 import RegisterError from "./RegisterError";
-import axios from "axios";
 
 export default function RegisterForm(props) {
 
@@ -16,19 +15,11 @@ export default function RegisterForm(props) {
     //Register Form Error logic
     const [isRegisterError, setIsRegisterError] = useState(false)
     const [registerErrorMessage, setRegisterErrorMessage] = useState({})
-
-    // useEffect(() => {
-    //
-    //     }, [isRegisterError]
-    // );
-
     const registerErrorCondition = () => {
-        console.log("registerError: ", isRegisterError)
         if(isRegisterError === false) {
             return false
         }
         else {
-            console.log("registerErrorMessage displayed: ", registerErrorMessage)
             return <RegisterError registerErrorMessage={registerErrorMessage}/>
         }
     }
@@ -37,7 +28,7 @@ export default function RegisterForm(props) {
 
         ev.preventDefault()
         const {first_name, last_name, email, password} = ev.target
-        setIsRegisterError( false)   ///set error state back to false for new register POST
+        setIsRegisterError( false)   ///set error state back to false for new register attempt
 
         AuthApiService.postUser({
             first_name: first_name.value,
