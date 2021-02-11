@@ -47,15 +47,14 @@ export default function SearchForm(props) {
     ///onSubmit sending search for values via query string to back-end
     const onSubmit = () => {
         ///set loading spinner state
+        setSearchError('')
         props.setLoadingSpinner(true)
         axios.get(`${config.API_ENDPOINT}/searchForm/search?location=${locationQuery}&term=${termQuery}&limit=50&offset=${offsetQuery}`, {
             headers: {'authorization': `bearer ${TokenService.getAuthToken()}`},
         })
             .then((response) => {
                 let apiResults = [];
-                if (response.data === undefined) {
-                    return props.setApiResults("No Results")
-                }
+
                 ///conditional statements to create new get with updated offset query string if no results return
                 if (response.data > 0) {
                     let newOffsetQuery;
@@ -70,7 +69,6 @@ export default function SearchForm(props) {
                             props.setLoadingSpinner(false)
                         })
                         .catch(function (error) {
-                            console.log(error)
                             props.setLoadingSpinner(false)
                             setSearchError(error.response.data.message)
                         })
@@ -82,7 +80,6 @@ export default function SearchForm(props) {
                 }
             })
             .catch(function (error) {
-                console.log(error)
                 props.setLoadingSpinner(false)
                 setSearchError(error.response.data.message)
             })
@@ -117,7 +114,7 @@ export default function SearchForm(props) {
                     </button>
                     <p style={searchErrorStyle}>
                         {errors.searchField ? "Please enter a location." : false}
-                        {searchError === "Response timeout" ? "Something went wrong. Please try again or try a different region" : false}
+                        {searchError === "Response timeout" || searchError === "server error" || searchError === undefined ? "Something went wrong. Please try again or search a different region" : false}
                     </p>
                 </div>
                 <br/>

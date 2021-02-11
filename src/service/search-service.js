@@ -4,7 +4,7 @@ import config from "../config";
 import TokenService from "./token-service";
 
 export const axiosCall = (props, termQuery, locationQuery, offsetQuery) => {
-    axios.get(`${config.API_ENDPOINT}/searchForm/search?location=${locationQuery}&term=${termQuery}&limit=50&offset=${offsetQuery}`,{
+    axios.get(`${config.API_ENDPOINT}/searchForm/search?location=${locationQuery}&term=${termQuery}&limit=50&offset=${offsetQuery}`, {
         headers: {
             'authorization': `basic ${TokenService.getAuthToken()}`,
         },
@@ -14,20 +14,23 @@ export const axiosCall = (props, termQuery, locationQuery, offsetQuery) => {
             if (response.data > 0) {
                 let newOffsetQuery;
                 (response.data < 50) ? newOffsetQuery = 0 : newOffsetQuery = response.data - 1 ///conditional that sets offset query param
-                axios.get(`${config.API_ENDPOINT}/searchForm/search?location=${locationQuery}&term=${termQuery}&limit=50&offset=${newOffsetQuery}`,{
+                axios.get(`${config.API_ENDPOINT}/searchForm/search?location=${locationQuery}&term=${termQuery}&limit=50&offset=${newOffsetQuery}`, {
                     headers: {
                         'authorization': `basic ${TokenService.getAuthToken()}`,
                     }
                 })
                     .then((response) => {
                         dataCleaning(props, response)
-                    });
+                    })
+                    .catch(error => {
+                        console.error("This is the search-service error catch: ", error)
+                    })
             } else {
                 dataCleaning(props, response)
             }
         })
         .catch(error => {
-            console.error({error})
+            console.error("This is the search-service error catch: ", error)
         })
 }
 
