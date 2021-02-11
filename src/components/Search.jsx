@@ -29,7 +29,6 @@ export default function Search() {
             return <Results apiResults={apiResults}/>
         }
         else {
-            console.log(apiResults[0])
             return apiResults[0] === "No Results" ? <NoResults/> : <div></div>;
         }
     }

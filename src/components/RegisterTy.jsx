@@ -4,7 +4,7 @@ import Login from './Login'
 export default function RegisterTy() {
 
     return (
-        <div>
+        <div style={bottomMargin}>
             <div style={centerText}>
                 <h2>
                     Thank You For Registering!
@@ -20,6 +20,10 @@ export default function RegisterTy() {
 
 const centerText = {
     textAlign: "center",
-    margin: "2rem 0",
+    margin: "4rem 0",
+}
+
+const bottomMargin = {
+    margin: "0 0 4rem"
 }
 

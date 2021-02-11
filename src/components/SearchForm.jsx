@@ -27,6 +27,10 @@ export default function SearchForm(props) {
         setSearchValues({...apiValues, location: data.target.value})
     }
 
+    //search Error state
+    const [searchError, setSearchError] = useState('')
+
+
     ///useEffect/state for user location
     useEffect(() => {
             axios.get(`https://ipapi.co/city/`)
@@ -44,43 +48,43 @@ export default function SearchForm(props) {
     const onSubmit = () => {
         ///set loading spinner state
         props.setLoadingSpinner(true)
-        axios.get(`${config.API_ENDPOINT}/searchForm/search?location=${locationQuery}&term=${termQuery}&limit=50&offset=${offsetQuery}`,{
-            headers: {
-                'authorization': `bearer ${TokenService.getAuthToken()}`,
-            }
+        axios.get(`${config.API_ENDPOINT}/searchForm/search?location=${locationQuery}&term=${termQuery}&limit=50&offset=${offsetQuery}`, {
+            headers: {'authorization': `bearer ${TokenService.getAuthToken()}`},
         })
             .then((response) => {
                 let apiResults = [];
-                if(response.data === undefined) {
+                if (response.data === undefined) {
                     return props.setApiResults("No Results")
                 }
                 ///conditional statements to create new get with updated offset query string if no results return
                 if (response.data > 0) {
                     let newOffsetQuery;
                     (response.data < 50) ? newOffsetQuery = 0 : newOffsetQuery = response.data - 1 ///conditional that sets offset query param
-                    axios.get(`${config.API_ENDPOINT}/searchForm/search?location=${locationQuery}&term=${termQuery}&limit=50&offset=${newOffsetQuery}`,{
-                        headers: {
-                            'authorization': `bearer ${TokenService.getAuthToken()}`,
-                        }
+                    axios.get(`${config.API_ENDPOINT}/searchForm/search?location=${locationQuery}&term=${termQuery}&limit=50&offset=${newOffsetQuery}`, {
+                        headers: {'authorization': `bearer ${TokenService.getAuthToken()}`},
                     })
                         .then((response) => {
                             ///clean data before setting state with map to populate in results component
-                            response.data.map(business =>
-                                apiResults.push(business))
+                            response.data.map(business => apiResults.push(business))
                             props.setApiResults(apiResults)
                             props.setLoadingSpinner(false)
-                            console.log("resp: ", response)
-                        });
+                        })
+                        .catch(function (error) {
+                            console.log(error)
+                            props.setLoadingSpinner(false)
+                            setSearchError(error.response.data.message)
+                        })
                 } else {
                     ///clean data before setting state with map to populate in results component
-                    response.data.map(business =>
-                        apiResults.push(business))
+                    response.data.map(business => apiResults.push(business))
                     props.setApiResults(apiResults)
                     props.setLoadingSpinner(false)
                 }
             })
-            .catch(error => {
-                console.error({error})
+            .catch(function (error) {
+                console.log(error)
+                props.setLoadingSpinner(false)
+                setSearchError(error.response.data.message)
             })
     }
 
@@ -111,13 +115,22 @@ export default function SearchForm(props) {
                         type="submit">
                         <BsSearch/>
                     </button>
-                    {errors.searchField && <p style={{color: "red"}}>Please enter a location.</p>}
+                    <p style={searchErrorStyle}>
+                        {errors.searchField ? "Please enter a location." : false}
+                        {searchError === "Response timeout" ? "Something went wrong. Please try again or try a different region" : false}
+                    </p>
                 </div>
                 <br/>
                 {mapFilterOptions}
             </form>
         </div>
     )
+}
+
+const searchErrorStyle = {
+    color: "red",
+    margin: "1rem 0",
+    fontSize: "15px"
 }
 
 const searchFieldStyle = {

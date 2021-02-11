@@ -7,7 +7,7 @@ export const axiosCall = (props, termQuery, locationQuery, offsetQuery) => {
     axios.get(`${config.API_ENDPOINT}/searchForm/search?location=${locationQuery}&term=${termQuery}&limit=50&offset=${offsetQuery}`,{
         headers: {
             'authorization': `basic ${TokenService.getAuthToken()}`,
-        }
+        },
     })
         .then((response) => {
             ///conditional statements to create new get with updated offset query string if no results return
