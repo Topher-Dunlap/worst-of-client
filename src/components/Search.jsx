@@ -13,21 +13,24 @@ export default function Search() {
     ///useState for yelp API results
     const [apiResults, setApiResults] = useState([]);
 
+    ///
+
     ///useState for loading spinner
     const [loadingSpinner, setLoadingSpinner] = useState(false);
 
     //if no search has been made return no results
     function NoResults() {
-        return <div></div>
+        return <div style={noResultsStyle}>Sorry, no results available. Please try again or search different region</div>
     }
 
     //if search returns results render results else return nothing
     function ResultsConditional() {
-        if (apiResults.length !== 0) {
+        if (apiResults[0] !== undefined) {
             return <Results apiResults={apiResults}/>
         }
         else {
-            return <NoResults/>;
+            console.log(apiResults[0])
+            return apiResults[0] === "No Results" ? <NoResults/> : <div></div>;
         }
     }
 
@@ -56,6 +59,11 @@ export default function Search() {
             </div>
         </section>
     )
+}
+
+const noResultsStyle = {
+    color: "red",
+    textAlign:"center"
 }
 
 const container = {

@@ -33,7 +33,11 @@ export default function SearchForm(props) {
                 .then((response) => {
                     setSearchValues({...apiValues, location: response.data})
                 })
-        }, [apiValues]
+                .catch(error => {
+                    console.log(error)
+                    setSearchValues({...apiValues, location: ''})
+                })
+        }, []
     );
 
     ///onSubmit sending search for values via query string to back-end
@@ -47,6 +51,9 @@ export default function SearchForm(props) {
         })
             .then((response) => {
                 let apiResults = [];
+                if(response.data === undefined) {
+                    return props.setApiResults("No Results")
+                }
                 ///conditional statements to create new get with updated offset query string if no results return
                 if (response.data > 0) {
                     let newOffsetQuery;
@@ -62,6 +69,7 @@ export default function SearchForm(props) {
                                 apiResults.push(business))
                             props.setApiResults(apiResults)
                             props.setLoadingSpinner(false)
+                            console.log("resp: ", response)
                         });
                 } else {
                     ///clean data before setting state with map to populate in results component
